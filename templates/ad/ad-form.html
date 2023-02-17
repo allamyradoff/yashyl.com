@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+<section class="section-conten padding-y bg" style="margin-top: 1%; margin-bottom: 1%;">
+
+
+
+    {% include 'include/alert.html' %}
+
+    <div class="container">
+        <div class="row">
+            {% include 'include/dashboard_sidebar.html' %}
+            <main class="col-md-9">
+                <article class="card">
+                    <header class="card-header">
+                        <strong class="d-inline-block mr-3">Haryt goşmak:</strong>
+                    </header>
+                    <div class="card-body">
+                        
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <form action="{% url 'added_ad_product' %}" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+
+                                    <div class="col-md-12" style="margin: 1%; display: flex;">
+                                        <div class="col-md-7">
+                                            {{form.name}}
+
+                                        </div>
+                                        <div class="col-md-4" style="margin-left: 1%;">
+                                            {{form.price}}
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12" style="margin: 1%;">
+                                        {{form.desc}}
+
+                                    </div>
+                                    <label for="">
+                                        <h3 style="text-align: center;"> Suratyny saýlaň</h3>
+                                    </label>
+                                    <div class="col-md-12"
+                                        style="display: flex; justify-content: space-between; flex-wrap: wrap; margin: 1%;">
+                                        <div class="col-md-3" style="margin-top: 1%;">
+                                            {{form.image}}
+                                        </div>
+                                        <div class="col-md-3" style="margin-top: 1%;">
+                                            {{form.image_2}}
+                                        </div>
+                                        <div class="col-md-3" style="margin-top: 1%;">
+                                            {{form.image_3}}
+                                        </div>
+                                    </div>
+                                    <br>
+                                    {{form.phone_number}}
+                                    <br>
+                                    <div class="col-md-12" style="display: flex; flex-wrap: wrap;">
+                                        <div class="col-md-6" style="flex-wrap: wrap;">
+                                            <p style="padding-right: 20%;">Kategoriýasyny saýlaň</p>
+                                            {{form.cat_id}}
+                                        </div>
+                                        <div class="col-md-6" style="flex-wrap: wrap;">
+                                            <p style="padding-right: 20%;">Welaýaty saýlaň</p>
+                                            {{form.locations}}
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-12" style="display: flex;">
+                                    </div>
+
+
+
+                                    <div class="col-12">
+
+                                        <button type="submit" class="button button-3d m-0 float-right"
+                                        style="margin-top: 2% !important;">Ýatda saklamak</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+
+        </article> <!-- order-group.// -->
+        </main>
+    </div> <!-- row.// -->
+
+
+</section>
+
+{% endblock %}

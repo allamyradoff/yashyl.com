@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+<main>
+
+
+    <!-- account-area-start -->
+    <div class="account-area mt-70 mb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6" style="float:none;margin:auto;">
+                    <div class="basic-login mb-50">
+                        {% include 'include/alert.html' %}
+                        <h5>Profil döretmek</h5>
+                        <form action="{% url 'register_profile' %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="col-12 form-group">
+                                <label>Welaýat:</label>
+                                <input type="text" name="state" class="form-control required" value=""
+                                    placeholder="Mary">
+                            </div>
+                            <div class="col-12 form-group">
+                                <label>Salgysy:</label>
+                                <input type="text" name="address_line_1" class="form-control required" value=""
+                                    placeholder="Mary Shaher Galkynysh koche 35/40">
+                            </div>
+
+                            <div class="col-6 form-group">
+                                <label>Telefon belgisi:</label><br>
+                                <input type="text" class="form-control required" value="{{request.user.phone_number}}">
+                            </div>
+
+                            <div class="col-6 form-group">
+                                <label>Profil suraty:</label>
+                                <input type="file" name="profile_avatar"/>
+                            </div>
+                            <button class="add-to-cart button m-0" type="submit" value="login">Ýatda saklamak
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+{% endblock %}

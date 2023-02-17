@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+
+
+
+
+
+<section id="content">
+    <div class="content-wrap">
+        <div class="container clearfix">
+
+            <div class="accordion accordion-lg mx-auto mb-0 clearfix" style="max-width: 550px;">
+
+                <div class="accordion-header">
+                    <div class="accordion-icon">
+                        <i class="accordion-closed icon-lock3"></i>
+                        <i class="accordion-open icon-unlock"></i>
+                    </div>
+                    {% include 'include/alert.html' %}
+                    <div class="accordion-title">
+                        Girmek
+                    </div>
+                </div>
+                <div class="accordion-content clearfix">
+                    <form  class="row mb-0" action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        <div class="col-12 form-group">
+                            <label for="login-form-username">Telefon belgisini giriziň :</label>
+                            <input type="text" name="phone_number" value="" class="form-control" />
+                        </div>
+
+                        <div class="col-12 form-group">
+                            <label for="login-form-password">Parolyňyzy giriziň:</label>
+                            <input type="password" name="password" value="" class="form-control" />
+                        </div>
+
+                        <div class="col-12 form-group">
+                            <button class="add-to-cart button m-0" type="submit" value="login">Girmek
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="accordion-header">
+                    <div class="accordion-icon">
+                        <i class="accordion-closed icon-user4"></i>
+                        <i class="accordion-open icon-ok-sign"></i>
+                    </div>
+                    <div class="accordion-title">
+                        Täze akkaunt döretmek
+                    </div>
+                </div>
+                <div class="accordion-content clearfix">
+                    <form  class="row mb-0" action="{% url 'register'%}" method="post">
+                        {% csrf_token %}
+                        <div class="col-12 form-group">
+                            <label for="register-form-name">Adyňyz:</label>
+                            {{form.first_name}}
+                        </div>
+
+                        <div class="col-12 form-group">
+                            <label for="register-form-email">Email poçtaňyz:</label>
+                            {{form.email}}
+                        </div>
+
+                        
+
+                        <div class="col-12 form-group">
+                            <label for="register-form-phone">Familýaňyz:</label>
+                            {{form.last_name}}
+                        </div>
+
+
+                        <div class="col-12 form-group">
+                            <label for="register-form-phone">Telefon belgiňiz:</label>
+                            {{form.phone_number}}
+                        </div>
+
+                        <div class="col-12 form-group">
+                            <label for="register-form-password">Parol giriziň:</label>
+                            {{form.password}}
+                        </div>
+
+                        <div class="col-12 form-group">
+                            <label for="register-form-repassword">Parol tassyklaň:</label>
+                            {{form.confirm_password}}
+                        </div>
+
+                        <div class="col-12 form-group">
+                            <button class="add-to-cart button m-0" type="submit"
+                                value="register">Döret</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

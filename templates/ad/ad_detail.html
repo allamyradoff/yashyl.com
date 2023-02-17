@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+{% load watermark %}
+
+<section id="page-title">
+
+    <div class="container clearfix">
+        <h1>{{product.name}}</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Baş sahypa</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'store' %}">Harytlar</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{product.name}}</li>
+        </ol>
+    </div>
+
+</section>
+
+
+<section id="content">
+    <div class="content-wrap">
+        <div class="container clearfix">
+
+            <div class="single-product">
+                <div class="product">
+                    <div class="row gutter-40">
+
+                        <div class="col-md-6">
+
+                            <!-- Product Single - Gallery
+                            ============================================= -->
+                            <div class="product-image">
+                                <div class="fslider" data-pagi="false" data-arrows="false" data-thumbs="true">
+                                    <div class="flexslider">
+                                        <div class="slider-wrap" data-lightbox="gallery">
+                                            <div class="slide" data-thumb="{{ad.image.url}}"><a href="{{ad.image.url}}"
+                                                    title="Pink Printed Dress - Front View"
+                                                    data-lightbox="gallery-item"><img src="{{ad.image.url | watermark:'asia,  position=50%x50%, opacity=40,tile=1' }}"
+                                                        alt="{{ad.name}}"></a></div>
+                                            {% if ad.image_2 %}
+                                            <div class="slide" data-thumb="{{ad.image_2.url}}"><a
+                                                    href="{{ad.image_2.url}}" title="Pink Printed Dress - Side View"
+                                                    data-lightbox="gallery-item"><img src="{{ad.image_2.url | watermark:'asia,  position=50%x50%, opacity=40,tile=1' }}"
+                                                        alt="{{ad.name}}"></a></div>
+                                            {% endif %}
+                                            {% if ad.image_3 %}
+                                            <div class="slide" data-thumb="{{ad.image_3.url}}"><a
+                                                    href="{{ad.image_3.url}}" title="Pink Printed Dress - Back View"
+                                                    data-lightbox="gallery-item"><img src="{{ad.image_3.url | watermark:'asia,  position=50%x50%, opacity=40,tile=1' }}"
+                                                        alt="{{ad.name}}"></a></div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if product.sale_price %}
+                                <div class="sale-flash badge badge-danger p-2">Sale!</div>
+                                {% endif %}
+                            </div><!-- Product Single - Gallery End -->
+
+                        </div>
+
+                        <div class="col-md-6 product-desc">
+
+                            <h1>{{ad.name}}</h1>
+                            <div class="d-flex align-items-center justify-content-between">
+
+                                <!-- Product Single - Price
+                                ============================================= -->
+                                <div class="product-price font-primary">{{ad.price}} TMT</del></div>
+
+
+
+                            </div>
+
+                            <div class="line"></div>
+
+
+
+
+
+                            <div class="line"></div>
+
+                            <!-- Product Single - Short Description
+                            ============================================= -->
+                            <p>{{product.desc}}</p>
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    <span class="text-muted">Kategoriýasy:</span><span
+                                        class="text-dark font-weight-semibold">{{ad.cat_id.name}}</span>
+                                </li>
+
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    <span class="text-muted">Görülen:</span><span
+                                        class="text-dark font-weight-semibold">{{ad.seen_count}} sapar</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    <span class="text-muted">Welaty:</span><span
+                                        class="text-dark font-weight-semibold">{{ad.locations}}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    <span class="text-muted">Telefon belgisi:</span><span
+                                        class="text-dark font-weight-semibold">{{ad.phone_number}}</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                    <span class="text-muted">Beýany:</span><span class="text-dark font-weight-semibold">
+                                    </span>
+                                </li>
+                                <p class="des-text mb-35">{{ad.desc}}</p>
+                            </ul>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</section>
+{% endblock %}

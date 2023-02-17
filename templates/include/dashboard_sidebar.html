@@ -1,0 +1,22 @@
+
+
+
+<div class="col-md-3">
+
+    <div class="list-group">
+        <a class="list-group-item  list-group-item-action d-flex justify-content-between {% if '/dashboard/' in request.path %}active{% endif %}" href="{% url 'dashboard' %}">Profil<i class="icon-user"></i></a>
+        <a class="list-group-item list-group-item-action d-flex justify-content-between {% if '/my_orders/' in request.path %}active{% endif %}" href="{% url 'my_orders' %}">Sargytlarym<i class="icon-credit-cards"></i></a>
+        <a class="list-group-item list-group-item-action d-flex justify-content-between {% if '/edit_profile/' in request.path %}active{% endif %}" href="{% url 'edit_profile' %}"> Profili redaktirläň<i class="icon-cog"></i></a>
+        <a class="list-group-item list-group-item-action d-flex justify-content-between {% if '/changePassword/' in request.path %}active{% endif %}" href="{% url 'changePassword' %}">Paroly üýtgetmek<i class="icon-cog"></i></a>
+        <a class="list-group-item list-group-item-action d-flex justify-content-between {% if '/added_ad_product/' in request.path %}active{% endif %}" href="{% url 'added_ad_product' %}">Bildiriş goşmak<i class="icon-ad"></i></a>
+        <a class="list-group-item list-group-item-action d-flex justify-content-between {% if '/my_ad/' in request.path %}active{% endif %}" href="{% url 'my_ad' %}">Bildirişlerim<i class="icon-ad"></i></a>
+        <a class="list-group-item list-group-item-action d-flex justify-content-between" href="{% url 'logout' %}"><div>Çykyş</div><i class="icon-line2-logout"></i></a>
+    </div>
+
+    <div class="fancy-title topmargin title-border">
+    </div>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum laboriosam, dignissimos veniam obcaecati. Quasi eaque, odio assumenda porro explicabo laborum!</p>
+
+
+</div>

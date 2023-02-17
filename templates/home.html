@@ -1,0 +1,455 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Slider
+		============================================= -->
+<section id="slider" class="slider-element swiper_wrapper" data-autoplay="6000" data-speed="800" data-loop="true"
+	data-grab="true" data-effect="fade" data-arrow="false" style="height: 600px;">
+
+	<div class="swiper-container swiper-parent">
+		<div class="swiper-wrapper">
+			{% for i in slider %}
+			<div class="swiper-slide dark">
+				<div class="container">
+					<div class="slider-caption slider-caption-center">
+						<div>
+							<div class="h5 mb-2 font-secondary">{{i.slider_title}}</div>
+							<h2 class="bottommargin-sm text-white">{{i.slider_mini_title}}</h2>
+							<a href="#" class="button bg-white text-dark button-light">GIŇIŞLEÝIN</a>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide-bg" style="background-image: url('{{i.slider_image.url}}');"></div>
+			</div>
+			{% endfor %}
+
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+
+</section><!-- #Slider End -->
+
+<!-- Content
+		============================================= -->
+<section id="content">
+	<div class="content-wrap">
+		<div class="container clearfix">
+
+			<!-- Shop Categories
+					============================================= -->
+			<div class="fancy-title title-border title-center mb-4">
+				<h4>Meşhur kategoriýalar</h4>
+			</div>
+
+			<div class="row shop-categories clearfix">
+				{% for i in category %}
+				<div class="{{i.col_md}}">
+					<a href="#"
+						style="background: url('{{i.image.url}}') no-repeat right center; background-size: cover; border-radius: 35px;">
+						<div class="vertical-middle dark center">
+							<div class="heading-block m-0 border-0">
+								<h3 class="nott font-weight-semibold ls0">{{i.name}}</h3>
+							</div>
+						</div>
+					</a>
+				</div>
+				{% endfor %}
+
+			</div>
+
+			<!-- Featured Carousel
+					============================================= -->
+			<div class="fancy-title title-border mt-4 title-center">
+				<h4>Hepdelik aýratynlyklar</h4>
+			</div>
+
+			<div id="oc-products" class="owl-carousel products-carousel carousel-widget" data-margin="20"
+				data-loop="false" data-autoplay="5000" data-nav="true" data-pagi="false" data-items-xs="1"
+				data-items-sm="2" data-items-md="3" data-items-lg="4" data-items-xl="5">
+
+				{% for i in product_sale %}
+				<div class="oc-item">
+					<div class="product">
+						<div class="product-image">
+							<a href="{% url 'product_detail' i.id  i.category.id %}"><img src="{{i.image.url}}" alt="Round Neck T-shirts"></a>
+							<a href="{% url 'product_detail' i.id  i.category.id %}"><img src="{{i.image_1.url}}" alt="Round Neck T-shirts"></a>
+							<div class="sale-flash badge badge-danger p-2">Arzanladyş!</div>
+							<div class="bg-overlay">
+								<div class="bg-overlay-content align-items-end justify-content-between"
+									data-hover-animate="fadeIn" data-hover-speed="400">
+									<a href="{% url 'add_cart' i.id %}" class="btn btn-dark mr-2"><i class="icon-shopping-basket"></i></a>
+									<a href="{% url 'product_detail' i.id  i.category.id %}" class="btn btn-dark"><i class="icon-line-expand"></i></a>
+								</div>
+								<div class="bg-overlay-bg bg-transparent"></div>
+							</div>
+						</div>
+						<div class="product-desc">
+							<div class="product-title mb-1">
+								<h3><a href="{% url 'product_detail' i.id  i.category.id %}">{{i.name}}</a></h3>
+							</div>
+							<div class="product-price font-primary">{% if i.sale_price %}<ins>{{i.sale_price}} TMT
+								</ins><del class="mr-1">{% endif %}{{i.get_price}} TMT</del></div>
+							<!-- <div class="product-price font-primary"><del class="mr-1">TMT 24.99</del> <ins>TMT12.49</ins></div> -->
+
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+
+
+			</div>
+
+		</div>
+
+		<!-- New Arrival Section
+				============================================= -->
+		<div class="section my-4">
+			<div class="container">
+				<div class="row align-items-stretch">
+					<div class="col-md-5">
+						<div class="row">
+							<div class="col-md-12 center p-5">
+								<div class="heading-block mb-1 border-bottom-0 mx-auto">
+									<div class="font-secondary text-black-50 mb-1">{{top_product.mini_desc_1}}</div>
+									<h3 class="nott ls0">{{top_product.mini_desc_2}}</h3>
+									<p class="font-weight-normal mt-2 mb-3 text-muted"
+										style="font-size: 17px; line-height: 1.4">{{top_product.mini_desc_3}}</p>
+									<a href="{% url 'product_detail' top_product.product.id  top_product.product.category.id %}"
+										class="button bg-dark text-white button-dark button-small ml-0">Giňişleýin</a>
+								</div>
+							</div>
+							{% if top_product.product.image_1 %}
+							<div class="col-6">
+								<a href="{{top_product.product.image_1.url}}" data-lightbox="image"><img
+										src="{{top_product.product.image_1.url}}" alt="Image"></a>
+							</div>
+							{% endif %}
+
+							{% if top_product.product.image_2 %}
+							<div class="col-6">
+								<a href="{{top_product.product.image_2.url}}" data-lightbox="image"><img
+										src="{{top_product.product.image_2.url}}" alt="Image"></a>
+							</div>
+							{% endif %}
+
+						</div>
+					</div>
+					<div class="col-md-7 min-vh-50">
+						<a href="{{top_product.link}}" data-lightbox="iframe" class="d-block position-relative h-100"
+							style="background: url('{{top_product.product.image.url}}') center center no-repeat; background-size: cover;">
+							<div class="vertical-middle text-center">
+								<div class="play-icon"><i class="icon-play-sign display-3 text-light"></i></div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+
+		<!-- New Arrivals Men
+				============================================= -->
+		<div class="container clearfix">
+
+			<div class="fancy-title title-border topmargin-sm mb-4 title-center">
+				<h4>TÄZE ASSORTIMENT</h4>
+			</div>
+
+			<div class="row grid-6">
+
+
+
+				<!-- Shop Item Slider
+						============================================= -->
+				{% for i in product_new %}
+				<div class="col-lg-2 col-md-3 col-6 px-2">
+					<div class="product">
+						<div class="product-image">
+							<div class="fslider" data-arrows="false" data-autoplay="4500">
+								<div class="flexslider">
+									<div class="slider-wrap">
+										{% if i.image %}
+										<div class="slide"><a href=""><img
+													src="{{i.image.url}}"
+													alt="Image 4"></a></div>
+										{% endif %}
+										{% if i.image_1 %}
+										<div class="slide"><a href="{% url 'product_detail' i.id  i.category.id %}"><img
+													src="{{i.image_1.url}}"
+													alt="Image 4"></a></div>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+							<div class="bg-overlay">
+								<div class="bg-overlay-content align-items-end justify-content-between"
+									data-hover-animate="fadeIn" data-hover-speed="400">
+									<a href="{% url 'add_cart' i.id %}" class="btn btn-dark mr-2"><i class="icon-shopping-basket"></i></a>
+									<a href="{% url 'product_detail' i.id  i.category.id %}" class="btn btn-dark"
+										><i class="icon-line-expand"></i></a>
+								</div>
+								<div class="bg-overlay-bg bg-transparent"></div>
+							</div>
+						</div>
+						<div class="product-desc">
+							<div class="product-title mb-1">
+								<h3><a href="{% url 'product_detail' i.id  i.category.id %}">{{i.name}}</a></h3>
+							</div>
+							<div class="product-price font-primary">{% if i.sale_price %}<ins>{{i.sale_price}} TMT
+							</ins><del class="mr-1">{% endif %}{{i.get_price}} TMT</del></div>
+							
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+
+
+
+
+			</div>
+
+		</div>
+
+		{% for i in banner_of_charity %}
+		<div class="section my-4 py-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row align-items-stretch align-items-center">
+							<div class="col-md-7 min-vh-50"
+								style="background: url('{{i.image.url}}') center center no-repeat; background-size: cover;">
+								
+							</div>
+							<div class="col-md-5 bg-white">
+								<div class="card border-0 py-2">
+									<div class="card-body">
+										<h3 class="card-title mb-4 ls0">{{i.name}}</h3>
+										<ul class="iconlist ml-3">
+											<li><i class="icon-circle-blank text-black-50"></i> {{i.desc}}</li>
+											
+										</ul>
+										<a href="#"
+											class="button button-rounded ls0 font-weight-semibold ml-0 mb-2 nott px-4">Hasaba
+											gir</a><br>
+										<small class="font-italic text-black-50">Alada etme, düýbünden mugt.</small>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+
+		<div class="container">
+
+			<!-- Features
+					============================================= -->
+			<div class="row col-mb-50 mb-0 mt-5">
+				<div class="col-lg-7">
+					<div class="row mt-3">
+						<div class="col-sm-6">
+							<div class="feature-box fbox-sm fbox-plain">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line2-present text-dark text-dark"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3 class="font-weight-normal">100% Original</h3>
+									<p>Canvas provides support for Native HTML5 Videos that can be added to a Full Width
+										Background.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 mt-4 mt-sm-0">
+							<div class="feature-box fbox-sm fbox-plain">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line2-globe text-dark"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3 class="font-weight-normal">Mugt eltip bermek</h3>
+									<p>Display your Content attractively using Parallax Sections that have unlimited
+										customizable areas.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 mt-4">
+							<div class="feature-box fbox-sm fbox-plain">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line2-reload text-dark"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3 class="font-weight-normal">30 günlük gaýdyp gelýär</h3>
+									<p>You have complete easy control on each &amp; every element that provides endless
+										customization possibilities.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 mt-4">
+							<div class="feature-box fbox-sm fbox-plain">
+								<div class="fbox-icon">
+									<a href="#"><i class="icon-line2-wallet text-dark"></i></a>
+								</div>
+								<div class="fbox-content">
+									<h3 class="font-weight-normal">Töleg opsiýasys</h3>
+									<p>We accept Visa, MasterCard and American Express. And We also Deliver by COD(only
+										in US)</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-5">
+					<div class="accordion clearfix">
+
+						<div class="accordion-header">
+							<div class="accordion-icon">
+								<i class="accordion-closed icon-ok-circle"></i>
+								<i class="accordion-open icon-remove-circle"></i>
+							</div>
+							<div class="accordion-title">
+								Biziň wezipämiz
+							</div>
+						</div>
+						<div class="accordion-content">Donec sed odio dui. Nulla vitae elit libero, a pharetra augue.
+							Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis
+							dapibus posuere velit aliquet.</div>
+
+						<div class="accordion-header">
+							<div class="accordion-icon">
+								<i class="accordion-closed icon-ok-circle"></i>
+								<i class="accordion-open icon-remove-circle"></i>
+							</div>
+							<div class="accordion-title">
+								Biz näme edýäris?
+							</div>
+						</div>
+						<div class="accordion-content">Integer posuere erat a ante venenatis dapibus posuere velit
+							aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur.
+							Cras mattis consectetur purus sit amet fermentum.</div>
+
+						<div class="accordion-header">
+							<div class="accordion-icon">
+								<i class="accordion-closed icon-ok-circle"></i>
+								<i class="accordion-open icon-remove-circle"></i>
+							</div>
+							<div class="accordion-title">
+								Kompaniýamyzyň gymmatlyklary
+							</div>
+						</div>
+						<div class="accordion-content">Nullam id dolor id nibh ultricies vehicula ut id elit. Integer
+							posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo
+							luctus. Aenean lacinia bibendum nulla sed consectetur.</div>
+
+						<div class="accordion-header">
+							<div class="accordion-icon">
+								<i class="accordion-closed icon-ok-circle"></i>
+								<i class="accordion-open icon-remove-circle"></i>
+							</div>
+							<div class="accordion-title">
+								Yza gaýdyp geliş syýasatymyz
+							</div>
+						</div>
+						<div class="accordion-content">Integer posuere erat a ante venenatis dapibus posuere velit
+							aliquet. Duis mollis, est non commodo luctus. Aenean lacinia bibendum nulla sed consectetur.
+							Cras mattis consectetur purus sit amet fermentum.</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<div class="clear"></div>
+
+			<!-- Brands
+					============================================= -->
+			<div class="row mt-5">
+				<div class="col-12">
+					<div class="fancy-title title-border title-center mb-4">
+						<h4>Arzanladyş berýän markalar <span class="text-danger">40%</span> </h4>
+					</div>
+
+					<ul class="clients-grid grid-2 grid-sm-3 grid-md-6 grid-lg-8 mb-0">
+						{% for i in brands %}
+						<li class="grid-item"><a href="{% url 'store_brands' i.id %}"><img src="{{i.image.url}}"
+									alt="brands"></a></li>
+									
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="clear"></div>
+
+		<!-- App Buttons
+				============================================= -->
+		<div class="section pb-0 mb-0" style="background-color: #f8f5f0">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 offset-1 bottommargin-lg d-flex flex-column align-self-center">
+						<h3 class="card-title font-weight-normal ls0">Yzarla. Tap. Halaýan<br>Modany öwreniň.</h3>
+						<span>Korporatiw peýdalary işjeň ýagdaýda işjeňleşdiriň.</span>
+						<div class="mt-3">
+							<a href="#"
+								class="button inline-block button-small button-rounded button-desc font-weight-normal ls1 clearfix"><i
+									class="icon-apple"></i>
+								<div><span>Ýuklemelek</span>App Store</div>
+							</a>
+							<a href="#"
+								class="button inline-block button-small button-rounded button-desc button-light text-dark font-weight-normal ls1 bg-white border clearfix"><i
+									class="icon-googleplay"></i>
+								<div><span>Ýuklemelek</span>Google Play</div>
+							</a>
+						</div>
+					</div>
+					<div class="col-md-4 d-none d-md-flex align-items-end">
+						<img src="{% static 'demos/shop/images/sections/app.png' %}" alt="Image" class="mb-0">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Last Section
+				============================================= -->
+		<div class="section footer-stick bg-white m-0 py-3 border-bottom">
+			<div class="container clearfix">
+
+				<div class="row clearfix">
+					<div class="col-lg-4 col-md-6">
+						<div class="shop-footer-features mb-3 mb-lg-3"><i class="icon-line2-globe-alt"></i>
+							<h5 class="inline-block mb-0 ml-2 font-weight-semibold"><a href="#">Mugt eltip
+									bermek</a><span class="font-weight-normal text-muted"> &amp; Aňsat gaýdyp
+									gelýär</span></h5>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="shop-footer-features mb-3 mb-lg-3"><i class="icon-line2-notebook"></i>
+							<h5 class="inline-block mb-0 ml-2"><a href="#">Hakyky önümler</a><span
+									class="font-weight-normal text-muted"> Kepillendirilen</span></h5>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-12">
+						<div class="shop-footer-features mb-3 mb-lg-3"><i class="icon-line2-lock"></i>
+							<h5 class="inline-block mb-0 ml-2"><a href="#">256-Bit</a> <span
+									class="font-weight-normal text-muted">Ygtybarly barlaglar</span></h5>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section><!-- #content end -->
+
+{% endblock %}
