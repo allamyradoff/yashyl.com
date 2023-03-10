@@ -1,0 +1,111 @@
+{% extends 'store/base_admin.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <form class="row g-3" style="display: flex; flex-direction: column;" method="POST"
+        action="{% url 'create-product' %}">
+        {% csrf_token %}
+        <div class="">
+
+            {{form.as_p}}
+            <!-- {{form.name}}
+            {{form.desc}}
+            {{form.image}}
+            {{form.image_1}}
+            {{form.image_2}}
+            {{form.price}}
+            {{form.stock}}
+            {{form.sale_percent}}
+            {{form.sale_price}}
+            {{form.store}} -->
+
+            <div class="col-12" style="margin-top: 2%">
+                <button type="submit" class="btn btn-danger">Ugrat</button>
+            </div>
+            <!-- <label for="exampleFormControlTextarea1" style="margin-top:1%">Gysgaça beýany</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="notes"></textarea>
+
+                <div class="input-group-addon">Bahasy manatda</div>
+                <input type="number" min="0.00" step="0.05" value="1.00" name="priceman" id="exampleInputAmount"
+                    class="form-control" placeholder="Price">
+
+                <input type="hidden" class="form-control " id='carid' placeholder="Haýsy awto degişliligi" name="carids"
+                    style="margin-top:2%">
+
+                <input type="hidden" class="form-control" id="catid" name="catid" placeholder="" name="yagday"
+                    style="margin-top:2%">
+
+
+
+                <label for="exampleFormControlTextarea1" style="margin-top:1%">Haýsy awto Sayla</label>
+
+                <div class="col-12 d-flex">
+                    <div class="col-10">
+                        <input type="text" class="form-control " id='car_name' placeholder="Haýsy awto ady"
+                            style="margin-top:2%">
+                    </div>
+                    <div class="col-2" style="margin-top: 2%">
+                        <a href="#cars_id_name" class="btn btn-danger" style="color: #fff;"
+                            onclick='document.getElementById("cars_id_name").style.display  = "flex";'>Sayla</a>
+                    </div>
+                </div>
+
+
+
+                <label for="exampleFormControlTextarea1" style="margin-top:1%">Haýsy kategoriyasyny
+                    Sayla</label>
+                <div class="col-md-12 d-flex">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control " placeholder="Kategoriýasy" id="catid_show">
+
+                    </div>
+                    <div class="col-md-6">
+                        <a href="#cart_id_name" class="btn btn-danger" style="color: #fff;"
+                            onclick='document.getElementById("cart_id_name").style.display  = "flex";'>Sayla</a>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <input type="hidden" class="form-control " placeholder="Ýagdaýy: 0(Köne) ýa-da 1(Täze)" name="yagday"
+                    style="margin-top:2%" id="rating">
+
+
+
+                <input type="hidden" class="form-control " placeholder="Tel nomer" name="tel"
+                    style="margin-top:2%; margin-bottom:5%;" value="+99363370891">
+
+
+                <div class="container" style="margin-top: 1%;">
+                    <label for="exampleFormControlTextarea1" style="margin-top:1%">Haýsy yagdayy
+                        Sayla</label>
+                    <div class="row">
+                        <div class="col-sm">
+                            {% for i in ratimg %}
+                            <a class="btn btn-primary" onclick="setStatus('{{i.name}}')"><i
+                                    class="fa fa-star">{{i.name}}</i></a>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+
+ -->
+
+
+        </div>
+    </form>
+
+</div>
+
+
+
+
+{% endblock %}

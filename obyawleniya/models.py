@@ -3,8 +3,8 @@ from accounts.models import Account
 from PIL import Image
 
 class CategoryAd(models.Model):
-    name = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='category_ads/', blank=True, null=True)
+    name = models.CharField(max_length=255, verbose_name="Ady")
+    image = models.ImageField(upload_to='category_ads/', blank=True, null=True, verbose_name="Surat")
 
 
     def ad_count(self):
@@ -16,11 +16,11 @@ class CategoryAd(models.Model):
         return self.name
 
 class Locations(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, verbose_name="Beýany")
     parent = models.ForeignKey(
-        'self', null=True, blank=True, related_name="children", on_delete=models.PROTECT)
-    description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to="locations/", null=True, blank=True)
+        'self', null=True, blank=True, related_name="children", on_delete=models.PROTECT, verbose_name="Esasy")
+    description = models.TextField(blank=True, null=True, verbose_name="Beýany")
+    image = models.ImageField(upload_to="locations/", null=True, blank=True, verbose_name="Suraty")
 
 
     def loc_count(self):
@@ -41,24 +41,24 @@ class Ad(models.Model):
         ('Balkan', 'Balkan'),
         ('Dashoguz', 'Dashoguz'),
     ]
-    name = models.CharField(max_length=255)
-    desc = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='ad_test/', blank=True, null=True)
-    image_2 = models.ImageField(upload_to='ad_test/', blank=True, null=True)
-    image_3 = models.ImageField(upload_to='ad_test/', blank=True, null=True)
-    price = models.FloatField(blank=True, null=True)
-    phone_number = models.CharField(max_length=20, blank=True, null=True)
-    exchange = models.BooleanField(default=False)
-    credit = models.BooleanField(default=False)
+    name = models.CharField(max_length=255, verbose_name="Ady")
+    desc = models.TextField(blank=True, null=True, verbose_name="Beýany")
+    image = models.ImageField(upload_to='ad_test/', blank=True, null=True, verbose_name="Surat")
+    image_2 = models.ImageField(upload_to='ad_test/', blank=True, null=True, verbose_name="Surat")
+    image_3 = models.ImageField(upload_to='ad_test/', blank=True, null=True, verbose_name="Surat")
+    price = models.FloatField(blank=True, null=True, verbose_name="Bahasy $")
+    phone_number = models.CharField(max_length=20, blank=True, null=True, verbose_name="Telefon belgi")
+    exchange = models.BooleanField(default=False, verbose_name="Alyş-çalyş")
+    credit = models.BooleanField(default=False, verbose_name="Garaşaryna")
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
-    seen_count = models.IntegerField(blank=True, null=True, default=0)
+    seen_count = models.IntegerField(blank=True, null=True, default=0, verbose_name="Görülenler")
 
     
     
-    locations = models.CharField(max_length=150, choices=LOC_CATEGORY, default="Mary")
-    cat_id = models.ForeignKey(CategoryAd, on_delete=models.CASCADE, blank=True, null=True)
-    user = models.ForeignKey(Account, on_delete=models.CASCADE, null=True)
+    locations = models.CharField(max_length=150, choices=LOC_CATEGORY, default="Mary", verbose_name="Ýerleşýän ýeri")
+    cat_id = models.ForeignKey(CategoryAd, on_delete=models.CASCADE, blank=True, null=True, verbose_name="Kategoriýa")
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, null=True, verbose_name="Müşderi")
 
     def save(self):
         super().save()

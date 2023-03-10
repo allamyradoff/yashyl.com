@@ -73,10 +73,10 @@ class Account(AbstractBaseUser):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(Account, on_delete=models.CASCADE)
-    address_line_1 = models.CharField(max_length=100, blank=True)
-    profile_avatar = models.ImageField(upload_to='userprofile/', blank=True, null=True)
-    state = models.CharField(max_length=20, blank=True)
+    user = models.OneToOneField(Account, on_delete=models.CASCADE, verbose_name="Müşderi")
+    address_line_1 = models.CharField(max_length=100, blank=True, verbose_name="Salgy")
+    profile_avatar = models.ImageField(upload_to='userprofile/', blank=True, null=True, default='avatar.png', verbose_name="Müşderi awatar")
+    state = models.CharField(max_length=20, blank=True, verbose_name="Welaýat")
 
     def __str__(self):
         return self.user.first_name

@@ -2,7 +2,7 @@ from django.db import models
 from accounts.models import Account
 from django.urls import reverse
 from accounts.models import Account
-
+from store.models import Store
 
 class Category(models.Model):    
     COL = (
@@ -69,7 +69,7 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
     desc = models.TextField(max_length=255, blank=True, null=True)
-    image = models.ImageField(upload_to='products/', blank=True, null=True)
+    desc = models.ImageField(upload_to='products/', blank=True, null=True)
     image_1 = models.ImageField(upload_to='products/', blank=True, null=True)
     image_2 = models.ImageField(upload_to='products/', blank=True, null=True)
     price = models.IntegerField(blank=True, null=True)
@@ -85,6 +85,7 @@ class Product(models.Model):
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     brands = models.ForeignKey(Brand, on_delete=models.CASCADE, blank=True, null=True)
+
 
     def __str__(self):
         return self.name

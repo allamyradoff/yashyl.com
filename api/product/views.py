@@ -9,9 +9,10 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from product.models import Product, Category
 from .serializers import *
 from accounts.models import Account
+from rest_framework.pagination import LimitOffsetPagination
 
 
-class ProductListView(APIView):
+class ProductListView(APIView, LimitOffsetPagination):
     def get(self, request):
         try:
             name = None
@@ -47,8 +48,11 @@ class ProductListView(APIView):
                     products = products.order_by('cource_price')
                 elif minPrice > '0':
                     products = products.order_by('-cource_price')
-            serializer = ProductSerializer(products, many=True)
-            return Response(serializer.data)
+            # serializer = ProductSerializer(products, many=True)
+            # return Response(serializer.data)
+            results = self.paginate_queryset(products,  request, view=self)
+            serializer = ProductSerializer(results, many=True)
+            return self.get_paginated_response(serializer.data)
         except:
             message = {'detail': 'None'}
             return Response(message, status=status.HTTP_400_BAD_REQUEST)
