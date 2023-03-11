@@ -11,7 +11,10 @@ from rest_framework.parsers import FileUploadParser
 from rest_framework.parsers import MultiPartParser, FormParser
 
 from accounts.models import *
-from .serializers import UserProfilesSerializer, AccountSerializer, AccountSerializerWithToken
+from .serializers import *
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.contrib import messages, auth
+
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -25,6 +28,24 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
+
+
+
+
+
+@api_view(['POST'])
+
+def login(request):
+    data = request.data
+
+    if request.method == 'POST':
+        email = request.POST['phone_number']
+        password = request.POST['password']
+
+        user = auth.authenticate(phone_number=email, password=password)
+
+    serializer = AccountSerializerLogin(user, many=False)
+    return Response(serializer.data)
 
 
 @api_view(['POST'])

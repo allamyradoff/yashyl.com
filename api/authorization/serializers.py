@@ -4,7 +4,13 @@ from rest_framework_simplejwt.tokens import RefreshToken
 # from accounts.models import Account, UserProfiles
 from accounts.models import *
 
+class AccountSerializerLogin(serializers.ModelSerializer):
+	class Meta:
+		model = Account
+		fields = "__all__"
 
+
+		
 class UserProfilesSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = UserProfile

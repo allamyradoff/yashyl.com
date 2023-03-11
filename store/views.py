@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
+from django.http import HttpResponse
 from product.models import *
 from .forms import *
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
@@ -27,28 +28,44 @@ def login_page(request):
 
 
 def base_user_admin(request):
+    store = Store.objects.filter(user_id=request.user)
+    # store = store.id
+    print(store)
+
+    # store_prod = StoreProduct.objects.all()
+    # print(store_prod)
+
     return render(request, 'store/main-admin.html')
 
 
 def create_product(request):
-
+    user = request.user.id
+    # print(user)
     store = Store.objects.all()
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form = form.save()
-            form.user = request.user
-            user = request.user.id
-            store = store.get(user_id=user)
-            print(store)
-            # form.store = store.id
-            form.save()
-            return redirect('dashboard')
-    else:
-        form = ProductForm()
+    store = store.get(user_id=user)
+    print(store.id)
+
+
+
+
+    try: 
+        if request.method == 'POST':
+            form = ProductForm(request.POST, request.FILES)
+            if form.is_valid():
+                form = form.save()
+                form.user = request.user                
+                form.save()
+                return redirect('admin-user')
+        else:
+            form = ProductForm()
+    except:
+        return HttpResponse('suraty girizmegiňizi haýyş edýäris')
+    
+    
 
 
     context = {
-        'form': form
+        'form': form,
+        'store':store,
     }
     return render(request, 'store/create_product.html', context)

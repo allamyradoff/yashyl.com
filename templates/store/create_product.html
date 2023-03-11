@@ -2,17 +2,17 @@
 {% load static %}
 
 {% block content %}
-
+            
 
 
 <div class="container">
     <form class="row g-3" style="display: flex; flex-direction: column;" method="POST"
-        action="{% url 'create-product' %}">
-        {% csrf_token %}
-        <div class="">
+    action="{% url 'create-product' %}"  enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="">
 
-            {{form.as_p}}
-            <!-- {{form.name}}
+            <!-- {{form.as_p}} -->
+            {{form.name}}
             {{form.desc}}
             {{form.image}}
             {{form.image_1}}
@@ -21,7 +21,10 @@
             {{form.stock}}
             {{form.sale_percent}}
             {{form.sale_price}}
-            {{form.store}} -->
+            
+            <input type="hidden"  name="store" class="form-control " value="{{store.id}}">
+            
+            <!-- {{form.store}} -->
 
             <div class="col-12" style="margin-top: 2%">
                 <button type="submit" class="btn btn-danger">Ugrat</button>
