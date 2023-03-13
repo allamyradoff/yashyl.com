@@ -28,14 +28,19 @@ def login_page(request):
 
 
 def base_user_admin(request):
-    store = Store.objects.filter(user_id=request.user)
-    # store = store.id
-    print(store)
+    user = request.user
+    store = Store.objects.filter(user_id=user)
+    store = store.last()
+    # print(store.id)
 
-    # store_prod = StoreProduct.objects.all()
+    store_prod = StoreProduct.objects.filter(store=store)
     # print(store_prod)
 
-    return render(request, 'store/main-admin.html')
+    context = {
+        'store_prod': store_prod,
+    }
+
+    return render(request, 'store/main-admin.html', context)
 
 
 def create_product(request):
@@ -69,3 +74,10 @@ def create_product(request):
         'store':store,
     }
     return render(request, 'store/create_product.html', context)
+
+
+
+def delete_product(request, id):
+    shop = StoreProduct.objects.get(id=id)
+    shop.delete()
+    return redirect('admin-user')

@@ -3,6 +3,7 @@ from accounts.models import Account
 from django.urls import reverse
 from accounts.models import Account
 from store.models import Store
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Category(models.Model):    
     COL = (

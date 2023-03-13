@@ -42,11 +42,11 @@ INSTALLED_APPS = [
 
 
     'rest_framework',
-    # 'rest_framework_simplejwt',
+    'rest_framework_simplejwt',
     'corsheaders',
     'django.contrib.sitemaps',
 
-    "watermarker",
+    # "watermarker",
 
     'product',
     'accounts',
