@@ -9,7 +9,7 @@
 
     <div id="content">
 
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <!-- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
             <form class="form-inline">
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -96,7 +96,7 @@
                                 Spending Alert: We've noticed unusually high spending for your account.
                             </div>
                         </a>
-                        <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                        <a class="dropdown-item text-center small text-gray-500" href="#">Show All  Alerts</a>
                     </div>
                 </li>
 
@@ -192,14 +192,12 @@
 
             </ul>
 
-        </nav>
+        </nav> -->
 
         <div class="container-fluid">
 
-            <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-            <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                For more information about DataTables, please visit the <a target="_blank"
-                    href="https://datatables.net">official DataTables documentation</a>.</p>
+            <h1 class="h3 mb-2 text-gray-800">Sanawy</h1>
+            
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3" style="display: flex; justify-content: space-between;">
@@ -226,22 +224,11 @@
                                     <th>Pozmak</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Ady</th>
-                                    <th>Dukan</th>
-                                    <th>Beyany</th>
-                                    <th>Jemi</th>
-                                    <th>Bahasy</th>
-                                    <th>Arzanladysh bahasy</th>
-                                    <th>Pozmak</th>
-
-                                </tr>
-                            </tfoot>
+                           
                             <tbody>
                                 {% for i in store_prod %}
                                 <tr>
-                                    <td>{{i.name}}</td>
+                                    <td><a href="{% url 'update_product' i.id %}">{{i.name}}</a></td>
                                     <td>{{i.store}}</td>
                                     <td>{{i.desc}}</td>
                                     <td>{{i.stock}}</td>
@@ -263,7 +250,7 @@
     <footer class="sticky-footer bg-white">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2020</span>
+                <span>Copyright &copy; yashyl.com 2023</span>
             </div>
         </div>
     </footer>
