@@ -48,7 +48,6 @@ def create_product(request):
     # print(user)
     store = Store.objects.all()
     store = store.get(user_id=user)
-    print(store.id)
 
 
 
@@ -74,6 +73,31 @@ def create_product(request):
         'store':store,
     }
     return render(request, 'store/create_product.html', context)
+
+
+def update_product(request, id): 
+    user = request.user.id
+    # print(user)
+    store = Store.objects.all()
+    store = store.get(user_id=user)
+   
+    product = StoreProduct.objects.get(id=id)
+    category = Category.objects.all()
+
+    if request.method == "POST":
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('admin-user')
+
+    context = {
+        'prod':product,
+        'form':ProductForm(instance=product),
+        'store':store,
+    }
+
+
+    return render(request, 'store/update_product.html', context)
 
 
 

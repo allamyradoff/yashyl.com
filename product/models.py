@@ -19,7 +19,7 @@ class Category(models.Model):
         ('Ýakynlaň üçin', 'Ýakynlaň üçin'),
         ('Özin üçin', 'Özin üçin'),
     )
-    name = models.CharField(max_length=150, choices=Name, default="Ayakgap")
+    name = models.CharField(max_length=150, choices=Name, default="Ayakgap", blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)
     desc = models.TextField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='category/', blank=True, null=True)

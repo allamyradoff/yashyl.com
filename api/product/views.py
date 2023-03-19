@@ -60,7 +60,32 @@ class ProductListView(APIView, LimitOffsetPagination):
 
 @api_view(['GET'])
 def categoryList(request):
+    first = None
+    second = None
+    third = None
+    fourth = None
+    fifth = None
+
     category = Category.objects.all()
+    if request.query_params.get('first', None):
+        first = request.query_params.get('first', None)
+        category = category.filter(name="Sport eşikleri")
+    if request.query_params.get('second', None):
+        second = request.query_params.get('second', None)
+        category = category.filter(name="Özin üçin")
+    if request.query_params.get('third', None):
+        third = request.query_params.get('third', None)
+        category = category.filter(name="Aýakgap")
+    if request.query_params.get('fourth', None):
+        fourth = request.query_params.get('fourth', None)
+        category = category.filter(name="Meşhur harytlar")
+    if request.query_params.get('fifth', None):
+        fifth = request.query_params.get('fifth', None)
+        category = category.filter(name="Ýakynlaň üçin")
+    # if request.query_params.get('one', None):
+    #     one = request.query_params.get('one', None)
+    #     category = category.filter(name="Sport eşikleri")
+    
     serializer = CategorySerializer(category, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -72,6 +97,7 @@ class CategoryProductsView(APIView):
         try:
             category_products = Category.objects.get(pk=pk)
             products = Product.objects.filter(category_id=category_products)
+
 
             if request.query_params.get('title', None):
                 title = request.query_params.get('title', None)
