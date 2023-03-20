@@ -20,7 +20,6 @@ class StoreProduct(models.Model):
     image_1 = models.ImageField(upload_to='products/', blank=True, null=True)
     image_2 = models.ImageField(upload_to='products/', blank=True, null=True)
     price = models.IntegerField(blank=True, null=True)
-    stock = models.IntegerField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
     sale_percent = models.CharField(max_length=10, blank=True, null=True)
     sale_price = models.CharField(max_length=255, blank=True, null=True)

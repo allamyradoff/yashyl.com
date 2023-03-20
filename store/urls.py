@@ -9,4 +9,6 @@ urlpatterns = [
     path('create-product', create_product, name="create-product"),
     path('update-product/<int:id>/', update_product, name="update_product"),
     path('delete-product/<int:id>/', delete_product, name="delete_product"),
+	path('admin-logout/', logout, name="admin-logout"),
+
 ]

@@ -105,3 +105,12 @@ def delete_product(request, id):
     shop = StoreProduct.objects.get(id=id)
     shop.delete()
     return redirect('admin-user')
+
+
+
+
+
+def logout(request):
+    auth.logout(request)
+    messages.success(request, 'Siz sistemadan çykdyňyz')
+    return redirect('store-list_mobile')
