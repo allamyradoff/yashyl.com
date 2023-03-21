@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'django.contrib.sitemaps',
+    'ckeditor',
 
     # "watermarker",
 
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
     'obyawleniya',
     'banner',
     'store',
+    'news',
 ]
 
 MIDDLEWARE = [
@@ -207,3 +209,11 @@ SIMPLE_JWT = {
 WATERMARKING_QUALITY = 85
 WATERMARK_OBSCURE_ORIGINAL = False
 
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}
