@@ -8,6 +8,7 @@ urlpatterns = [
 	path('banner/', include('api.banner.urls')),
 
 
+	path('news/', include('api.news.urls')),
 	path('store/', include('api.store.urls')),
 
 ]
