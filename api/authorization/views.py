@@ -88,11 +88,14 @@ class AccountProfileView(APIView):
         try:
             user = request.user
             data = request.data
+            data._mutable = True
             data["user"] = user.id
+            data._mutable = False
 
             serializer = UserProfilesSerializer(data=data)
             if serializer.is_valid():
                 serializer.save()
+                print("ok")
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -7,6 +7,9 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from accounts.models import *
 from django.contrib import messages, auth
 
+
+"""Функции для админки клиентов """
+
 def login_page(request):
 
     if request.method == 'POST':
@@ -114,3 +117,14 @@ def logout(request):
     auth.logout(request)
     messages.success(request, 'Siz sistemadan çykdyňyz')
     return redirect('store-list_mobile')
+
+
+
+
+
+
+"""Функции для самого сайта"""
+
+
+def stores(request):
+    return render(request, 'store/web/shop.html')

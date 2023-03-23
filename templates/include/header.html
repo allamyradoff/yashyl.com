@@ -64,8 +64,10 @@
                 <!-- Logo
 						============================================= -->
                 <div id="logo" class="mr-lg-4">
-                    <a href="/" class="standard-logo"><img src="{% static 'demos/shop/images/logo.png' %}" alt="Canvas Logo"></a>
-							<a href="/" class="retina-logo"><img src="{% static 'demos/shop/images/logo.png' %}" alt="Canvas Logo"></a>
+                    <a href="/" class="standard-logo"><img src="{% static 'demos/shop/images/logo.png' %}"
+                            alt="Canvas Logo"></a>
+                    <a href="/" class="retina-logo"><img src="{% static 'demos/shop/images/logo.png' %}"
+                            alt="Canvas Logo"></a>
                 </div><!-- #logo end -->
 
                 <div class="header-misc">
@@ -82,7 +84,8 @@
                     <div id="top-account">
                         <a href="{% url 'dashboard' %}"><i class="icon-line2-user mr-1 position-relative"
                                 style="top: 1px;"></i><span
-                                class="d-none d-sm-inline-block font-primary font-weight-medium">Profil {{request.user.username}}</span></a>
+                                class="d-none d-sm-inline-block font-primary font-weight-medium">Profil
+                                {{request.user.username}}</span></a>
                     </div>
                     {% endif %}
 
@@ -124,10 +127,12 @@
                 <nav class="primary-menu with-arrows mr-lg-auto">
 
                     <ul class="menu-container">
-                        <li class="menu-item {% if '//' in request.path %} current {% endif %}"><a class="menu-link" href="/">
+                        <li class="menu-item {% if '//' in request.path %} current {% endif %}"><a class="menu-link"
+                                href="/">
                                 <div style="text-align: center;">Baş</div>
                             </a></li>
-                        <li class="menu-item {% if '/store/' in request.path %} current {% endif %} mega-menu"><a class="menu-link" href="{% url 'store' %}">
+                        <li class="menu-item {% if '/store/' in request.path %} current {% endif %} mega-menu"><a
+                                class="menu-link" href="{% url 'store' %}">
                                 <div style="text-align: center;">Harytlar</div>
                             </a>
                             <div class="mega-menu-content mega-menu-style-2">
@@ -224,20 +229,27 @@
                             </div>
                         </li>
 
-                        <li class="menu-item {% if '/ad/all_ads/' in request.path %} current {% endif %}"><a class="menu-link" href="{% url 'all_ads' %}">
+                        <li class="menu-item {% if '/store-admin//stores/' in request.path %} current {% endif %}"><a
+                                class="menu-link" href="{% url 'stores' %}">
+                                <div style="text-align: center;">Magazinlar</div>
+                            </a></li>
+                        <li class="menu-item {% if '/ad/all_ads/' in request.path %} current {% endif %}"><a
+                                class="menu-link" href="{% url 'all_ads' %}">
                                 <div style="text-align: center;">Haýyr sahabat</div>
                             </a></li>
                         <li class="menu-item"><a class="menu-link" href="{% url 'logout' %}">
-                                <div class="responsive" style="text-align: center; border-radius: 5px; margin-bottom: 5%; border:2px solid red; padding: 2%; background-color: red;">Profilden çykmak</div>
+                                <div class="responsive"
+                                    style="text-align: center; border-radius: 5px; margin-bottom: 5%; border:2px solid red; padding: 2%; background-color: red;">
+                                    Profilden çykmak</div>
                             </a></li>
-                        
+
                     </ul>
 
                 </nav><!-- #primary-menu end -->
 
                 <form class="top-search-form" action="{% url 'search' %}" method="get">
-                    <input type="text" name="keyword" class="form-control"  style="color:#41a801 !important" value="" placeholder="Harydyň adyny giriziň"
-                        autocomplete="off">
+                    <input type="text" name="keyword" class="form-control" style="color:#41a801 !important" value=""
+                        placeholder="Harydyň adyny giriziň" autocomplete="off">
                 </form>
 
             </div>
