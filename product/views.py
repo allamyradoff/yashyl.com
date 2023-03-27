@@ -261,16 +261,15 @@ def product_detail(request, category_id, id):
     product = Product.objects.get(id=id)
     logo = Logo.objects.all()
 
-    if request.user.is_authenticated:
+    # if request.user.is_authenticated:
 
-        try:
-            orderproduct = OrderProduct.objects.filter(
-                user=request.user, product_id=product.id).exists()
-        except OrderProduct.DoesNotExist:
-            orderproduct = None
+    #     try:
+    #         orderproduct = OrderProduct.objects.filter(user=request.user, product_id=product.id).exists()
+    #     except OrderProduct.DoesNotExist:
+    #         orderproduct = None
 
-    else:
-        orderproduct = None
+    # else:
+    #     orderproduct = None
 
     reviews = ReviewRating.objects.filter(product_id=product.id, status=True)
     reviews_count = reviews.count()
@@ -298,7 +297,7 @@ def product_detail(request, category_id, id):
 
     context = {
         'product': product,
-        'orderproduct': orderproduct,
+        # 'orderproduct': orderproduct,
         'reviews': reviews,
         'profile': profile,
         'reviews_count': reviews_count,

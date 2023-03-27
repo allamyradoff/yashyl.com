@@ -29,7 +29,9 @@
                                         {% endif %}
                                         <div class="flexslider">
                                             <div class="slider-wrap">
+                                                {% if i.image %}
                                                 <div class="slide"><a href="{% url 'product_detail' i.id  i.category.id %}"><img src="{{i.image.url}}" alt="{{product.name}}"></a></div>
+                                                {% endif %}
                                                 {% if i.image_1 %}
                                                 <div class="slide"><a href="{% url 'product_detail' i.id  i.category.id %}"><img src="{{i.image_1.url}}" alt="{{product.name}}"></a></div>
                                                 {% endif %}

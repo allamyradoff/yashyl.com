@@ -34,10 +34,12 @@
                                 <div class="fslider" data-pagi="false" data-arrows="false" data-thumbs="true">
                                     <div class="flexslider">
                                         <div class="slider-wrap" data-lightbox="gallery">
+                                            {% if product.image %}
                                             <div class="slide" data-thumb="{{product.image.url}}"><a
-                                                    href="{{product.image.url}}" title="Pink Printed Dress - Front View"
-                                                    data-lightbox="gallery-item"><img src="{{product.image.url}}"
-                                                        alt="{{product.name}}"></a></div>
+                                                href="{{product.image.url}}" title="Pink Printed Dress - Front View"
+                                                data-lightbox="gallery-item"><img src="{{product.image.url}}"
+                                                alt="{{product.name}}"></a></div>
+                                            {% endif %}
                                             {% if product.image_1 %}
                                             <div class="slide" data-thumb="{{product.image_1.url}}"><a
                                                     href="{{product.image_1.url}}"
