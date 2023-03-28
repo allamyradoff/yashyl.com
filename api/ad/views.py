@@ -9,11 +9,12 @@ from rest_framework import generics, status, viewsets, mixins
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from obyawleniya.models import *
 from .serializers import *
+from news.models import *
 
 
 @api_view(['GET'])
 def adList(request):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     ad = Ad.objects.all()
     serializer = AdSerializer(ad, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
@@ -37,7 +38,7 @@ class AdsDelete(APIView):
 
 
 class AdsDetail(APIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     def get(self, request, pk):
         try:
             ad = Ad.objects.get(pk=pk)

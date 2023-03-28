@@ -22,7 +22,7 @@ def newsList(request):
 
 @api_view(['GET'])
 def newsDetailList(request, id):
-    news = News.objects.filter(id=id)
+    news = News.objects.filter(id=id)    
     serializer = NewsSerializer(news, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 

@@ -48,7 +48,8 @@ def home(request):
 
     """ Вариации категорий каторые требуется для шапки """
 
-    category_1 = Category.objects.filter(name="Sport eşikleri")[1:]
+    category_1 = Category.objects.filter(name="Sport eşikleri")[:1]
+    print(category_1)
     category_2 = Category.objects.filter(name="Aýakgap")[1:]
     category_3 = Category.objects.filter(name="Meşhur harytlar")[1:]
     category_4 = Category.objects.filter(name="Ýakynlaň üçin")[1:]
@@ -93,7 +94,6 @@ def all_product(request):
     #     cources = int(cources.price * cource)
     #     list_cource.append(cources)
 
-    # print(list_cource)
 
     if request.user.is_authenticated:
         cart_items = CartItem.objects.filter(user=request.user, is_active=True)
@@ -109,7 +109,6 @@ def all_product(request):
     # if FilterPrice:
     #     Int_FilterPrice = int(FilterPrice)
     #     product = Product.objects.filter(cource_price__lte=Int_FilterPrice)
-    #     print()
     # else:
     #     product = Product.objects.all()
 
@@ -171,7 +170,6 @@ def store(request, id):
     #     Int_FilterPrice = int(FilterPrice)
     #     product = Product.objects.filter(
     #         category=id, is_active=True, cource_price__lte=Int_FilterPrice)
-    #     print(product)
     # else:
     #     product = product
 
@@ -221,7 +219,6 @@ def store(request, id):
 def store_brands(request, id):
     category = Category.objects.all()
     product = Product.objects.filter(brands__id=id, is_active=True)
-    print(product)
     product = product.order_by('-id')
     all_products = Product.objects.all()
     category_count = all_products.count()

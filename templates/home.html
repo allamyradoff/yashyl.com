@@ -42,22 +42,71 @@
 			<div class="fancy-title title-border title-center mb-4">
 				<h4>Meşhur kategoriýalar</h4>
 			</div>
-
 			<div class="row shop-categories clearfix">
-				{% for i in category %}
-				<div class="{{i.col_md}}">
-					<a href="#"
-						style="background: url('{{i.image.url}}') no-repeat right center; background-size: cover; border-radius: 35px;">
+				<div class="col-lg-7">
+					<a href="#" style="background: url('{% static 'demos/shop/images/categories/2-1.jpg' %}') no-repeat right center; background-size: cover;border-radius: 35px;">
 						<div class="vertical-middle dark center">
 							<div class="heading-block m-0 border-0">
-								<h3 class="nott font-weight-semibold ls0">{{i.name}}</h3>
+								<h3 class="nott font-weight-semibold ls0">For Him</h3>
 							</div>
 						</div>
 					</a>
 				</div>
-				{% endfor %}
+				<div class="col-lg-5">
+					<a href="#" style="background: url('{% static 'demos/shop/images/categories/1.jpg' %}') no-repeat center right; background-size: cover;border-radius: 35px;">
+						<div class="vertical-middle dark center">
+							<div class="heading-block m-0 border-0">
+								<h3 class="nott font-weight-semibold ls0">For Her</h3>
+							</div>
+						</div>
+					</a>
+				</div>
 
+				<div class="col-lg-4">
+					<a href="#" style="background: url('{% static 'demos/shop/images/categories/4.jpg' %}') no-repeat center center; background-size: cover;border-radius: 35px;">
+						<div class="vertical-middle dark center">
+							<div class="heading-block m-0 border-0">
+								<h3 class="nott font-weight-semibold ls0">Popular Products</h3>
+								<small class="button bg-white text-dark button-light button-mini">Browse Now</small>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4">
+					<a href="#" style="background: url('{% static 'demos/shop/images/categories/3.jpg' %}') no-repeat center center; background-size: cover;border-radius: 35px;">
+						<div class="vertical-middle dark center">
+							<div class="heading-block m-0 border-0">
+								<h3 class="nott font-weight-semibold ls0">Footwears</h3>
+								<small class="button bg-white text-dark button-light button-mini">Shop Now</small>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4">
+					<a href="#" style="background: url('{% static 'demos/shop/images/categories/5.jpg' %}') no-repeat center center; background-size: cover;border-radius: 35px;">
+						<div class="vertical-middle dark center">
+							<div class="heading-block m-0 border-0">
+								<h3 class="nott font-weight-semibold ls0">Sportswear</h3>
+								<small class="button bg-white text-dark button-light button-mini">Shop Now</small>
+							</div>
+						</div>
+					</a>
+				</div>
 			</div>
+
+			<!-- <div class="row shop-categories clearfix">
+				<div class="col md-7">
+					<a href="#"
+						style="background: url('') no-repeat right center; background-size: cover; border-radius: 35px;">
+						<div class="vertical-middle dark center">
+							<div class="heading-block m-0 border-0">
+								<h3 class="nott font-weight-semibold ls0">Sport Eshikler</h3>
+							</div>
+						</div>
+					</a>
+				</div>
+
+			</div> -->
 
 			<!-- Featured Carousel
 					============================================= -->

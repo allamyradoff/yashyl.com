@@ -237,6 +237,10 @@
                                 class="menu-link" href="{% url 'all_ads' %}">
                                 <div style="text-align: center;">Haýyr sahabat</div>
                             </a></li>
+                        <li class="menu-item {% if 'news/news-list/' in request.path %} current {% endif %}"><a
+                                class="menu-link" href="{% url 'news-list' %}">
+                                <div style="text-align: center;">Tazelikler</div>
+                            </a></li>
                         <li class="menu-item"><a class="menu-link" href="{% url 'logout' %}">
                                 <div class="responsive"
                                     style="text-align: center; border-radius: 5px; margin-bottom: 5%; border:2px solid red; padding: 2%; background-color: red;">
