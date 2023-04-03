@@ -65,23 +65,43 @@ def categoryList(request):
     third = None
     fourth = None
     fifth = None
+    sixth  = None
+    seventh  = None
+    eighth  = None
+    ninth  = None
+    tenth  = None
 
     category = Category.objects.all()
     if request.query_params.get('first', None):
         first = request.query_params.get('first', None)
-        category = category.filter(name="Sport eşikleri")
+        category = category.filter(name="Egin-eshik")
     if request.query_params.get('second', None):
         second = request.query_params.get('second', None)
-        category = category.filter(name="Özin üçin")
+        category = category.filter(name="Oy bezegleri")
     if request.query_params.get('third', None):
         third = request.query_params.get('third', None)
-        category = category.filter(name="Aýakgap")
+        category = category.filter(name="Hojalyk harytlary")
     if request.query_params.get('fourth', None):
         fourth = request.query_params.get('fourth', None)
-        category = category.filter(name="Meşhur harytlar")
+        category = category.filter(name="Kompyuter tehnikalary")
     if request.query_params.get('fifth', None):
         fifth = request.query_params.get('fifth', None)
-        category = category.filter(name="Ýakynlaň üçin")
+        category = category.filter(name="Gozellik we ideg serishdeleri")
+    if request.query_params.get('sixth', None):
+        sixth = request.query_params.get('sixth', None)
+        category = category.filter(name="Awtobezegler")
+    if request.query_params.get('seventh', None):
+        seventh = request.query_params.get('seventh', None)
+        category = category.filter(name="Telefon aksessuarlary")
+    if request.query_params.get('eighth', None):
+        eighth = request.query_params.get('eighth', None)
+        category = category.filter(name="Sport we guymenje")
+    if request.query_params.get('ninth', None):
+        ninth = request.query_params.get('ninth', None)
+        category = category.filter(name="Konselyariya harytlary")
+    if request.query_params.get('tenth', None):
+        tenth = request.query_params.get('tenth', None)
+        category = category.filter(name="Gap-gachlar")
     # if request.query_params.get('one', None):
     #     one = request.query_params.get('one', None)
     #     category = category.filter(name="Sport eşikleri")

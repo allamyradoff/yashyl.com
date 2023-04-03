@@ -19,7 +19,7 @@ from django.db.models import Max, Min
 
 def home(request):
     product = Product.objects.filter(is_active=True)
-    category = Category.objects.all()[0:5]
+    category = Category.objects.all()
 
     product_sale = Product.objects.filter(is_active=True, is_sale=True)
     product_new = Product.objects.filter(is_active=True, is_new=True)
@@ -52,7 +52,13 @@ def home(request):
     category_2 = Category.objects.filter(name="Oy bezegleri")
     category_3 = Category.objects.filter(name="Hojalyk harytlary")
     category_4 = Category.objects.filter(name="Kompyuter tehnikalary")
-    category_5 = Category.objects.filter(name="Özin üçin")[1:]
+    category_5 = Category.objects.filter(name="Gozellik we ideg serishdeleri")
+    category_6 = Category.objects.filter(name="Awtobezegler")
+    category_7 = Category.objects.filter(name="Sport we guymenje")
+    category_8 = Category.objects.filter(name="Telefon aksessuarlary")
+    category_9 = Category.objects.filter(name="Konselyariya harytlary")
+    category_10 = Category.objects.filter(name="Gap-gachlar")
+
 
     context = {
         'product': product,
@@ -75,6 +81,12 @@ def home(request):
         'category_3': category_3,
         'category_4': category_4,
         'category_5': category_5,
+        'category_6':category_6,
+        'category_7':category_7,
+        'category_8':category_8,
+        'category_9':category_9,
+        'category_10':category_10,
+
     }
     return render(request, 'home.html', context)
 
@@ -106,7 +118,15 @@ def all_product(request):
     category_2 = Category.objects.filter(name="Oy bezegleri")
     category_3 = Category.objects.filter(name="Hojalyk harytlary")
     category_4 = Category.objects.filter(name="Kompyuter tehnikalary")
-    category_5 = Category.objects.filter(name="Özin üçin")[1:]
+    category_5 = Category.objects.filter(name="Gozellik we ideg serishdeleri")
+    category_6 = Category.objects.filter(name="Awtobezegler")
+    category_7 = Category.objects.filter(name="Sport we guymenje")
+    category_8 = Category.objects.filter(name="Telefon aksessuarlary")
+    category_9 = Category.objects.filter(name="Konselyariya harytlary")
+    category_10 = Category.objects.filter(name="Gap-gachlar")
+
+
+
 
     context = {
         'product': paged_products,
@@ -121,6 +141,11 @@ def all_product(request):
         'category_3': category_3,
         'category_4': category_4,
         'category_5': category_5,
+        'category_6':category_6,
+        'category_7':category_7,
+        'category_8':category_8,
+        'category_9':category_9,
+        'category_10':category_10,
 
     }
 
@@ -154,7 +179,15 @@ def store(request, id):
     category_2 = Category.objects.filter(name="Oy bezegleri")
     category_3 = Category.objects.filter(name="Hojalyk harytlary")
     category_4 = Category.objects.filter(name="Kompyuter tehnikalary")
-    category_5 = Category.objects.filter(name="Özin üçin")[1:]
+    category_5 = Category.objects.filter(name="Gozellik we ideg serishdeleri")
+    category_6 = Category.objects.filter(name="Awtobezegler")
+    category_7 = Category.objects.filter(name="Sport we guymenje")
+    category_8 = Category.objects.filter(name="Telefon aksessuarlary")
+    category_9 = Category.objects.filter(name="Konselyariya harytlary")
+    category_10 = Category.objects.filter(name="Gap-gachlar")
+
+
+
 
     context = {
         'product': paged_products,
@@ -171,6 +204,11 @@ def store(request, id):
         'category_3': category_3,
         'category_4': category_4,
         'category_5': category_5,
+        'category_6':category_6,
+        'category_7':category_7,
+        'category_8':category_8,
+        'category_9':category_9,
+        'category_10':category_10,
 
     }
     return render(request, 'store.html', context)
@@ -204,7 +242,13 @@ def storeCategory(request, slug):
     category_2 = Category.objects.filter(name="Oy bezegleri")
     category_3 = Category.objects.filter(name="Hojalyk harytlary")
     category_4 = Category.objects.filter(name="Kompyuter tehnikalary")
-    category_5 = Category.objects.filter(name="Özin üçin")[1:]
+    category_5 = Category.objects.filter(name="Gozellik we ideg serishdeleri")
+    category_6 = Category.objects.filter(name="Awtobezegler")
+    category_7 = Category.objects.filter(name="Sport we guymenje")
+    category_8 = Category.objects.filter(name="Telefon aksessuarlary")
+    category_9 = Category.objects.filter(name="Konselyariya harytlary")
+    category_10 = Category.objects.filter(name="Gap-gachlar")
+
 
 
     context = {
@@ -222,6 +266,11 @@ def storeCategory(request, slug):
         'category_3': category_3,
         'category_4': category_4,
         'category_5': category_5,
+        'category_6':category_6,
+        'category_7':category_7,
+        'category_8':category_8,
+        'category_9':category_9,
+        'category_10':category_10,
 
     }
 
@@ -258,9 +307,7 @@ def store_brands(request, id):
         'logo': logo,
         'cart_items': cart_items,
         'ads_cat': ads_cat,
-        'min_price': min_price,
-        'max_price': max_price,
-        'FilterPrice': FilterPrice,
+
         'current_id': current_id
 
     }
@@ -303,7 +350,16 @@ def product_detail(request, category_id, id):
     category_2 = Category.objects.filter(name="Oy bezegleri")
     category_3 = Category.objects.filter(name="Hojalyk harytlary")
     category_4 = Category.objects.filter(name="Kompyuter tehnikalary")
-    category_5 = Category.objects.filter(name="Özin üçin")[1:]
+    category_5 = Category.objects.filter(name="Gozellik we ideg serishdeleri")
+    category_6 = Category.objects.filter(name="Awtobezegler")
+    category_7 = Category.objects.filter(name="Sport we guymenje")
+    category_8 = Category.objects.filter(name="Telefon aksessuarlary")
+    category_9 = Category.objects.filter(name="Konselyariya harytlary")
+    category_10 = Category.objects.filter(name="Gap-gachlar")
+
+
+
+    
 
     context = {
         'product': product,
@@ -320,6 +376,12 @@ def product_detail(request, category_id, id):
         'category_3': category_3,
         'category_4': category_4,
         'category_5': category_5,
+        'category_6':category_6,
+        'category_7':category_7,
+        'category_8':category_8,
+        'category_9':category_9,
+        'category_10':category_10,
+
     }
 
     return render(request, 'product_detail.html', context)

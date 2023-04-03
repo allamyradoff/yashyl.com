@@ -166,6 +166,20 @@
 
                                                 </ul>
                                             </li>
+                                            <li class="menu-item mega-menu-title"><a class="menu-link" href="#">
+                                                <div>Sport we guymenje</div>
+                                            </a>
+                                            <ul class="sub-menu-container">
+                                                {% for i in category_7 %}
+
+                                                <li class="menu-item"><a class="menu-link"
+                                                        href="{% url 'store' i.id %}">
+                                                        <div>{{i.title}}</div>
+                                                    </a></li>
+                                                {% endfor %}
+
+                                            </ul>
+                                            </li>
                                         </ul>
                                         <ul class="sub-menu-container mega-menu-column border-left-0 col-lg-3">
                                             <li class="menu-item mega-menu-title"><a class="menu-link" href="#">
@@ -192,10 +206,22 @@
                                                     {% endfor %}
                                                 </ul>
                                             </li>
+                                            <li class="menu-item mega-menu-title"><a class="menu-link" href="#">
+                                                <div>Konselyariya harytlary</div>
+                                            </a>
+                                                <ul class="sub-menu-container">
+                                                    {% for i in category_9 %}
+                                                    <li class="menu-item"><a class="menu-link"
+                                                            href="{% url 'store' i.id %}">
+                                                            <div>{{i.title}}</div>
+                                                        </a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
                                         </ul>
                                         <ul class="sub-menu-container mega-menu-column border-left-0 col-lg-3">
                                             <li class="menu-item mega-menu-title"><a class="menu-link" href="#">
-                                                    <div>Özin üçin</div>
+                                                    <div>Gozellik we ideg serishdeleri</div>
                                                 </a>
                                                 <ul class="sub-menu-container">
                                                     {% for i in category_5 %}
@@ -205,6 +231,31 @@
                                                         </a></li>
                                                     {% endfor %}
                                                 </ul>
+                                            </li>
+                                            <li class="menu-item mega-menu-title"><a class="menu-link" href="#">
+                                                <div>Awtobezegler</div>
+                                            </a>
+                                            <ul class="sub-menu-container">
+                                                {% for i in category_6 %}
+                                                <li class="menu-item"><a class="menu-link"
+                                                        href="{% url 'store' i.id %}">
+                                                        <div>{{i.title}}</div>
+                                                    </a></li>
+                                                {% endfor %}
+                                            </ul>
+                                            </li>
+
+                                            <li class="menu-item mega-menu-title"><a class="menu-link" href="#">
+                                                <div>Gap-gachlar</div>
+                                            </a>
+                                            <ul class="sub-menu-container">
+                                                {% for i in category_10 %}
+                                                <li class="menu-item"><a class="menu-link"
+                                                        href="{% url 'store' i.id %}">
+                                                        <div>{{i.title}}</div>
+                                                    </a></li>
+                                                {% endfor %}
+                                            </ul>
                                             </li>
                                             <!-- <li class="menu-item mega-menu-title"><a class="menu-link" href="#">
                                                     <div>Özin üçin</div>
@@ -219,9 +270,7 @@
                                                 <img class="card-img-top"
                                                     src="{% static 'demos/shop/images/menu-image.jpg' %}"
                                                     alt="image cap">
-                                                <a href="#"
-                                                    class="btn btn-link text-left font-weight-medium pl-0 bg-transparent"><u>Editor's
-                                                        Pick</u></a>
+                                                
                                             </li>
                                         </ul>
                                     </div>

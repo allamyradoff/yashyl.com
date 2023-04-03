@@ -111,6 +111,56 @@
                                 <li ><a href="{% url 'store' i.id %}" {% if current_id == i.id %} style="color: #41a801;"{% endif %} >{{i.title}}</a></li>
                                 {% endfor %}
                             </ul>
+                            <hr>
+                            <h4>Gozellik we ideg serishdeleri</h4>
+                            <ul>
+                                
+                                {% for i in category_5 %}
+                                <li ><a href="{% url 'store' i.id %}" {% if current_id == i.id %} style="color: #41a801;"{% endif %} >{{i.title}}</a></li>
+                                {% endfor %}
+                            </ul>
+                            <hr>
+                            <h4>Awtobezegler</h4>
+                            <ul>
+                                
+                                {% for i in category_6 %}
+                                <li ><a href="{% url 'store' i.id %}" {% if current_id == i.id %} style="color: #41a801;"{% endif %} >{{i.title}}</a></li>
+                                {% endfor %}
+                            </ul>
+                            <hr>
+                            <h4>Telefon aksessuarlary</h4>
+                            <ul>
+                                
+                                {% for i in category_8 %}
+                                <li ><a href="{% url 'store' i.id %}" {% if current_id == i.id %} style="color: #41a801;"{% endif %} >{{i.title}}</a></li>
+                                {% endfor %}
+                            </ul>
+
+                            <hr>
+                            <h4>Sport we guymenje</h4>
+                            
+                            <ul>                                
+                                {% for i in category_7 %}
+                                <li ><a href="{% url 'store' i.id %}" {% if current_id == i.id %} style="color: #41a801;"{% endif %} >{{i.title}}</a></li>
+                                {% endfor %}
+                            </ul>
+
+                            <hr>
+                            <h4>Konselyariya harytlary</h4>
+                            
+                            <ul>                                
+                                {% for i in category_9 %}
+                                <li ><a href="{% url 'store' i.id %}" {% if current_id == i.id %} style="color: #41a801;"{% endif %} >{{i.title}}</a></li>
+                                {% endfor %}
+                            </ul>
+                            <hr>
+                            <h4>Gap-gachlar</h4>
+                            
+                            <ul>                                
+                                {% for i in category_10 %}
+                                <li ><a href="{% url 'store' i.id %}" {% if current_id == i.id %} style="color: #41a801;"{% endif %} >{{i.title}}</a></li>
+                                {% endfor %}
+                            </ul>
                             
 
                         </div>
