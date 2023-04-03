@@ -13,11 +13,16 @@ class Category(models.Model):
     )
 
     Name = (
-        ('Sport eşikleri', 'Sport eşikleri'),
-        ('Aýakgap', 'Aýakgap'),
-        ('Meşhur harytlar', 'Meşhur harytlar'),
-        ('Ýakynlaň üçin', 'Ýakynlaň üçin'),
-        ('Özin üçin', 'Özin üçin'),
+        ('Egin-eshik', 'Egin-eshik'),
+        ('Oy bezegleri', 'Oy bezegleri'),
+        ('Hojalyk harytlary', 'Hojalyk harytlary'),
+        ('Kompyuter tehnikalary', 'Kompyuter tehnikalary'),
+        ('Gozellik we ideg serishdeleri', 'Gozellik we ideg serishdeleri'),
+        ('Awtobezegler', 'Awtobezegler'),
+        ('Telefon aksessuarlary', 'Telefon aksessuarlary'),
+        ('Sport we guymenje', 'Sport we guymenje'),
+        ('Konselyariya harytlary', 'Konselyariya harytlary'),
+        ('Gap-gachlar', 'Gap-gachlar'),
     )
     name = models.CharField(max_length=150, choices=Name, default="Ayakgap", blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)

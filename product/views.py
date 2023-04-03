@@ -48,11 +48,10 @@ def home(request):
 
     """ Вариации категорий каторые требуется для шапки """
 
-    category_1 = Category.objects.filter(name="Sport eşikleri")[:1]
-    print(category_1)
-    category_2 = Category.objects.filter(name="Aýakgap")[1:]
-    category_3 = Category.objects.filter(name="Meşhur harytlar")[1:]
-    category_4 = Category.objects.filter(name="Ýakynlaň üçin")[1:]
+    category_1 = Category.objects.filter(name="Egin-eshik")
+    category_2 = Category.objects.filter(name="Oy bezegleri")
+    category_3 = Category.objects.filter(name="Hojalyk harytlary")
+    category_4 = Category.objects.filter(name="Kompyuter tehnikalary")
     category_5 = Category.objects.filter(name="Özin üçin")[1:]
 
     context = {
@@ -90,27 +89,10 @@ def all_product(request):
     cource = Cours.objects.last()
     cource = cource.cours
 
-    # for cources in all_products:
-    #     cources = int(cources.price * cource)
-    #     list_cource.append(cources)
-
-
     if request.user.is_authenticated:
         cart_items = CartItem.objects.filter(user=request.user, is_active=True)
     else:
         cart_items = 0
-
-    # cours = Cours.objects.last()
-
-    # min_price = Product.objects.all().aggregate(Min('cource_price'))
-    # max_price = Product.objects.all().aggregate(Max('cource_price'))
-
-    # FilterPrice = request.GET.get('FilterPrice')
-    # if FilterPrice:
-    #     Int_FilterPrice = int(FilterPrice)
-    #     product = Product.objects.filter(cource_price__lte=Int_FilterPrice)
-    # else:
-    #     product = Product.objects.all()
 
     paginator = Paginator(all_products, 8)
     page = request.GET.get('page')
@@ -120,10 +102,10 @@ def all_product(request):
 
     """ Вариации категорий каторые требуется для шапки """
 
-    category_1 = Category.objects.filter(name="Sport eşikleri")[1:]
-    category_2 = Category.objects.filter(name="Aýakgap")[1:]
-    category_3 = Category.objects.filter(name="Meşhur harytlar")[1:]
-    category_4 = Category.objects.filter(name="Ýakynlaň üçin")[1:]
+    category_1 = Category.objects.filter(name="Egin-eshik")
+    category_2 = Category.objects.filter(name="Oy bezegleri")
+    category_3 = Category.objects.filter(name="Hojalyk harytlary")
+    category_4 = Category.objects.filter(name="Kompyuter tehnikalary")
     category_5 = Category.objects.filter(name="Özin üçin")[1:]
 
     context = {
@@ -134,11 +116,6 @@ def all_product(request):
         'logo': logo,
         'cart_items': cart_items,
         'ads_cat': ads_cat,
-
-        # 'min_price': min_price,
-        # 'max_price': max_price,
-        # 'FilterPrice': FilterPrice,
-
         'category_1': category_1,
         'category_2': category_2,
         'category_3': category_3,
@@ -151,27 +128,13 @@ def all_product(request):
 
 
 def store(request, id):
-    category = Category.objects.all()[5:]
+    category = Category.objects.all()
     product = Product.objects.filter(category=id, is_active=True)
     product = product.order_by('-id')
     all_products = Product.objects.all()
     category_count = all_products.count()
     store_banner = StoreBanner.objects.all()
     logo = Logo.objects.all()
-
-    # min_price = Product.objects.filter(
-    #     category=id, is_active=True).aggregate(Min('cource_price'))
-    # max_price = Product.objects.filter(
-    #     category=id, is_active=True).aggregate(Max('cource_price'))
-
-    # FilterPrice = request.GET.get('FilterPrice')
-
-    # if FilterPrice:
-    #     Int_FilterPrice = int(FilterPrice)
-    #     product = Product.objects.filter(
-    #         category=id, is_active=True, cource_price__lte=Int_FilterPrice)
-    # else:
-    #     product = product
 
     paginator = Paginator(product, 8)
     page = request.GET.get('page')
@@ -187,10 +150,10 @@ def store(request, id):
 
     """ Вариации категорий каторые требуется для шапки """
 
-    category_1 = Category.objects.filter(name="Sport eşikleri")[1:]
-    category_2 = Category.objects.filter(name="Aýakgap")[1:]
-    category_3 = Category.objects.filter(name="Meşhur harytlar")[1:]
-    category_4 = Category.objects.filter(name="Ýakynlaň üçin")[1:]
+    category_1 = Category.objects.filter(name="Egin-eshik")
+    category_2 = Category.objects.filter(name="Oy bezegleri")
+    category_3 = Category.objects.filter(name="Hojalyk harytlary")
+    category_4 = Category.objects.filter(name="Kompyuter tehnikalary")
     category_5 = Category.objects.filter(name="Özin üçin")[1:]
 
     context = {
@@ -201,9 +164,6 @@ def store(request, id):
         'logo': logo,
         'cart_items': cart_items,
         'ads_cat': ads_cat,
-        # 'min_price': min_price,
-        # 'max_price': max_price,
-        # 'FilterPrice': FilterPrice,
         'current_id': current_id,
 
         'category_1': category_1,
@@ -213,6 +173,59 @@ def store(request, id):
         'category_5': category_5,
 
     }
+    return render(request, 'store.html', context)
+
+def storeCategory(request, slug):
+
+    cat = Category.objects.filter(name=slug)[:1]
+    product = Product.objects.filter(category=cat).order_by("-id")
+
+
+    all_products = Product.objects.all()
+    category_count = all_products.count()
+    store_banner = StoreBanner.objects.all()
+    logo = Logo.objects.all()
+
+    paginator = Paginator(product, 8)
+    page = request.GET.get('page')
+    paged_products = paginator.get_page(page)
+    current_id = id
+
+    ads_cat = CategoryAd.objects.all()
+
+    if request.user.is_authenticated:
+        cart_items = CartItem.objects.filter(user=request.user, is_active=True)
+    else:
+        cart_items = 0
+
+    """ Вариации категорий каторые требуется для шапки """
+
+    category_1 = Category.objects.filter(name="Egin-eshik")
+    category_2 = Category.objects.filter(name="Oy bezegleri")
+    category_3 = Category.objects.filter(name="Hojalyk harytlary")
+    category_4 = Category.objects.filter(name="Kompyuter tehnikalary")
+    category_5 = Category.objects.filter(name="Özin üçin")[1:]
+
+
+    context = {
+        'product': paged_products,
+        'category': cat,
+        'category_count': category_count,
+        'store_banner': store_banner,
+        'logo': logo,
+        'cart_items': cart_items,
+        'ads_cat': ads_cat,
+        'current_id': current_id,
+
+        'category_1': category_1,
+        'category_2': category_2,
+        'category_3': category_3,
+        'category_4': category_4,
+        'category_5': category_5,
+
+    }
+
+
     return render(request, 'store.html', context)
 
 
@@ -286,10 +299,10 @@ def product_detail(request, category_id, id):
 
         """ Вариации категорий каторые требуется для шапки """
 
-    category_1 = Category.objects.filter(name="Sport eşikleri")[1:]
-    category_2 = Category.objects.filter(name="Aýakgap")[1:]
-    category_3 = Category.objects.filter(name="Meşhur harytlar")[1:]
-    category_4 = Category.objects.filter(name="Ýakynlaň üçin")[1:]
+    category_1 = Category.objects.filter(name="Sport eşikleri")
+    category_2 = Category.objects.filter(name="Oy bezegleri")
+    category_3 = Category.objects.filter(name="Hojalyk harytlary")
+    category_4 = Category.objects.filter(name="Kompyuter tehnikalary")
     category_5 = Category.objects.filter(name="Özin üçin")[1:]
 
     context = {
