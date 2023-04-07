@@ -13,6 +13,8 @@ urlpatterns = [
 
 
 	path('stores/', stores, name="stores"),
+	path('store-products/<int:id>/', store_products, name="store-products"),
+    path('<int:id>/<int:category_id>/<int:store_id>/', product_detail, name="product_detail_web"),
 
 
 ]

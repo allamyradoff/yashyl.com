@@ -4,6 +4,7 @@ from django.urls import reverse
 from accounts.models import Account
 from store.models import Store
 from ckeditor_uploader.fields import RichTextUploadingField
+from store.models import Store
 
 class Category(models.Model):    
     COL = (
@@ -74,8 +75,8 @@ class Brand(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
-    desc = models.TextField(max_length=255, blank=True, null=True)
-    desc = models.ImageField(upload_to='products/', blank=True, null=True)
+    desc = RichTextUploadingField(blank=True, null=True)
+    image = models.ImageField(upload_to='products/', blank=True, null=True)
     image_1 = models.ImageField(upload_to='products/', blank=True, null=True)
     image_2 = models.ImageField(upload_to='products/', blank=True, null=True)
     price = models.IntegerField(blank=True, null=True)
@@ -83,6 +84,7 @@ class Product(models.Model):
     is_sale = models.BooleanField(default=False)
     is_new = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    is_store = models.BooleanField(default=False)
     sale_percent = models.CharField(max_length=10, blank=True, null=True)
     sale_price = models.CharField(max_length=255, blank=True, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -91,6 +93,8 @@ class Product(models.Model):
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     brands = models.ForeignKey(Brand, on_delete=models.CASCADE, blank=True, null=True)
+    store = models.ForeignKey(Store, on_delete=models.CASCADE, blank=True, null=True)
+
 
 
     def __str__(self):

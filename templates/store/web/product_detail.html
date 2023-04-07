@@ -155,8 +155,8 @@
                             <ul class="tab-nav clearfix">
                                 <li><a href="#tabs-1"><i class="icon-align-justify2"></i><span
                                             class="d-none d-md-inline-block">Giňişleýin beýany</span></a></li>
-                                <!-- <li><a href="#tabs-2"><i class="icon-info-sign"></i><span
-                                            class="d-none d-md-inline-block">Harydyň häsýetnamasy</span></a></li> -->
+                                <li><a href="#tabs-2"><i class="icon-info-sign"></i><span
+                                            class="d-none d-md-inline-block">Harydyň häsýetnamasy</span></a></li>
                                 <li><a href="#tabs-3"><i class="icon-star3"></i><span class="d-none d-md-inline-block">
                                             Synlar (2)</span></a></li>
                             </ul>
@@ -164,9 +164,9 @@
                             <div class="tab-container">
 
                                 <div class="tab-content clearfix" id="tabs-1">
-                                    <p>{{product.desc|safe}}</p>
+                                    <p>{{product.desc}}</p>
                                 </div>
-                                <!-- <div class="tab-content clearfix" id="tabs-2">
+                                <div class="tab-content clearfix" id="tabs-2">
 
                                     <table class="table table-striped table-bordered">
                                         <tbody>
@@ -201,7 +201,7 @@
                                         </tbody>
                                     </table>
 
-                                </div> -->
+                                </div>
                                 <div class="tab-content clearfix" id="tabs-3">
 
                                     <div id="reviews" class="clearfix">
@@ -281,6 +281,7 @@
                                                                 <button type="submit" class="button button-3d m-0 float-right">Iber</button>
 
                                                                 
+                                                                <a href="{% url 'login' %}" class="cart-btn">Girişiňizi haýyş edýäris</a>
                                                                 {% endif %}
                                                             </div>
 
@@ -342,24 +343,28 @@
 
         <div class="line"></div>
 
-        <!-- <div class="w-100">
+        <div class="w-100">
 
             <h4>Related Products</h4>
 
             <div class="owl-carousel product-carousel carousel-widget" data-margin="30" data-pagi="false"
                 data-autoplay="5000" data-items-xs="1" data-items-md="2" data-items-lg="3" data-items-xl="4">
-
+                {% for i in cat_prod %}
                 <div class="oc-item">
                     <div class="product">
                         <div class="product-image">
-                            <a href="#"><img src="{% static 'images/shop/dress/1.jpg' %}" alt="Checked Short Dress"></a>
-                            <a href="#"><img src="{% static 'images/shop/dress/1-1.jpg' %}" alt="Checked Short Dress"></a>
+                            {% if i.image %}
+                            <a href="{% url 'product_detail_web' i.id  i.category.id i.store.id %}"><img src="{{i.image.url}}" alt="Checked Short Dress"></a>
+                            {% endif %}
+                            {% if i.image_1 %}
+                            <a href="{% url 'product_detail_web' i.id  i.category.id i.store.id %}"><img src="{{i.image_1.url}}" alt="Checked Short Dress"></a>
+                            {% endif %}                            
                             <div class="badge badge-success p-2">50% Off*</div>
                             <div class="bg-overlay">
                                 <div class="bg-overlay-content align-items-end justify-content-between"
                                     data-hover-animate="fadeIn" data-hover-speed="400">
-                                    <a href="#" class="btn btn-dark mr-2"><i class="icon-shopping-cart"></i></a>
-                                    <a href="include/ajax/shop-item.html" class="btn btn-dark" data-lightbox="ajax"><i
+                                    <a href="{% url 'add_cart' i.id %}" class="btn btn-dark mr-2"><i class="icon-shopping-cart"></i></a>
+                                    <a href="{% url 'product_detail_web' i.id  i.category.id i.store.id %}" class="btn btn-dark" ><i
                                             class="icon-line-expand"></i></a>
                                 </div>
                                 <div class="bg-overlay-bg bg-transparent"></div>
@@ -367,25 +372,21 @@
                         </div>
                         <div class="product-desc center">
                             <div class="product-title">
-                                <h3><a href="#">Checked Short Dress</a></h3>
+                                <h3><a href="{% url 'product_detail_web' i.id  i.category.id i.store.id %}">{{i.name}}</a></h3>
                             </div>
-                            <div class="product-price"><del>$24.99</del> <ins>$12.49</ins></div>
-                            <div class="product-rating">
-                                <i class="icon-star3"></i>
-                                <i class="icon-star3"></i>
-                                <i class="icon-star3"></i>
-                                <i class="icon-star3"></i>
-                                <i class="icon-star-half-full"></i>
-                            </div>
+                            <div class="product-price font-primary">{% if i.sale_price %}<ins>{{i.sale_price}} TMT
+                            </ins><del class="mr-1">{% endif %}{{i.price}} TMT</del></div>
+                            
                         </div>
                     </div>
                 </div>
+                {% endfor %}
 
 
 
             </div>
 
-        </div> -->
+        </div>
 
     </div>
 </section>

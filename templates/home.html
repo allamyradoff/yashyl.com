@@ -117,7 +117,7 @@
 						</div>
 					</a>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<a href="{% url 'storeCategory' 'Konselyariya harytlary' %}" style="background: url('{% static 'demos/shop/images/categories/oy-bezegleri.jpg' %}') no-repeat center center; background-size: cover;border-radius: 35px;">
 						<div class="vertical-middle dark center">
 							<div class="heading-block m-0 border-0">
@@ -126,7 +126,7 @@
 						</div>
 					</a>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<a href="{% url 'storeCategory' 'Gap-gachlar' %}" style="background: url('{% static 'demos/shop/images/categories/oy-bezegleri.jpg' %}') no-repeat center center; background-size: cover;border-radius: 35px;">
 						<div class="vertical-middle dark center">
 							<div class="heading-block m-0 border-0">
@@ -217,6 +217,13 @@
 										class="button bg-dark text-white button-dark button-small ml-0">Giňişleýin</a>
 								</div>
 							</div>
+							{% if top_product.product.image %}
+							<div class="col-6">
+								<a href="{{top_product.product.imageurl}}" data-lightbox="image"><img
+										src="{{top_product.product.imag.url}}" alt="Image"></a>
+							</div>
+							{% endif %}
+
 							{% if top_product.product.image_1 %}
 							<div class="col-6">
 								<a href="{{top_product.product.image_1.url}}" data-lightbox="image"><img

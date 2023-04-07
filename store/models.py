@@ -6,6 +6,8 @@ from accounts.models import Account
 
 class Store(models.Model):
     name = models.CharField(max_length=255, verbose_name="Dükanyň ady")
+    logo = models.ImageField(upload_to='logo_stores/', blank=True, null=True)
+    desc = models.TextField(max_length=255, blank=True, null=True)
     user_id = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name="Ulanyjy")
 
 

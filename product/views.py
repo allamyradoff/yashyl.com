@@ -18,11 +18,11 @@ from django.db.models import Max, Min
 
 
 def home(request):
-    product = Product.objects.filter(is_active=True)
+    product = Product.objects.filter(is_active=True, is_store=False)
     category = Category.objects.all()
 
-    product_sale = Product.objects.filter(is_active=True, is_sale=True)
-    product_new = Product.objects.filter(is_active=True, is_new=True)
+    product_sale = Product.objects.filter(is_active=True, is_sale=True, is_store=False)
+    product_new = Product.objects.filter(is_active=True, is_new=True, is_store=False)
 
     top_product = TopProduct.objects.all()
     top_product = top_product[0]
@@ -93,7 +93,7 @@ def home(request):
 
 def all_product(request):
 
-    all_products = Product.objects.order_by('-id')
+    all_products = Product.objects.filter(is_store=False).order_by('-id')
     category_count = all_products.count()
     category = Category.objects.all()[5:]
     store_banner = StoreBanner.objects.all()
@@ -154,7 +154,7 @@ def all_product(request):
 
 def store(request, id):
     category = Category.objects.all()
-    product = Product.objects.filter(category=id, is_active=True)
+    product = Product.objects.filter(category=id, is_active=True, is_store=False)
     product = product.order_by('-id')
     all_products = Product.objects.all()
     category_count = all_products.count()
@@ -216,7 +216,7 @@ def store(request, id):
 def storeCategory(request, slug):
 
     cat = Category.objects.filter(name=slug)[:1]
-    product = Product.objects.filter(category=cat).order_by("-id")
+    product = Product.objects.filter(category=cat, is_store=False).order_by("-id")
 
 
     all_products = Product.objects.all()
@@ -280,7 +280,7 @@ def storeCategory(request, slug):
 
 def store_brands(request, id):
     category = Category.objects.all()
-    product = Product.objects.filter(brands__id=id, is_active=True)
+    product = Product.objects.filter(brands__id=id, is_active=True, is_store=False)
     product = product.order_by('-id')
     all_products = Product.objects.all()
     category_count = all_products.count()
@@ -315,7 +315,7 @@ def store_brands(request, id):
 
 
 def product_detail(request, category_id, id):
-    product = Product.objects.get(id=id)
+    product = Product.objects.get(id=id, is_store=False)
     logo = Logo.objects.all()
 
     # if request.user.is_authenticated:
