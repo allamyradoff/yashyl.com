@@ -169,7 +169,45 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="tp-pagination text-center" style="align-content: center;">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-xl-4">
+                        <div class="basic-pagination pt-30 pb-30">
+                            <nav>
+                                {% if product.has_other_pages %}
+                                <ul class="pagination">
+                                    <!-- {% if product.has_previous %}
+                                    <li><a href="?page={{product.previous_page_number}}">Преведущий</a></li>
+                                    {% else %}
+                                    <li><a href="#">Преведущий</a></li>
+                                    {% endif %} -->
 
+
+                                    {% for i in product.paginator.page_range %}
+                                    {% if product.number == i %}
+                                    <li class="page-item active"><a class="page-link" href="#">{{i}}</a></li>
+                                    {% else %}
+                                    <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                                    {% endif %}
+                                    {% endfor %}
+
+
+                                    <!-- {% if product.has_next %}
+                                    <li><a href="?page={{product.next_page_number}}">Следующий</a></li>
+                                    {% else %}
+                                    <li><a href="#">Следующий</a></li>
+                                    {% endif %} -->
+                                </ul>
+                                {% endif %}
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+
+            </div>
         </div>
     </div>
 </section>

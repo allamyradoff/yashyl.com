@@ -2,7 +2,7 @@
 
 {% block content %}
 {% load static %}
-
+{% load watermark %}
 
 <section id="page-title">
 
@@ -35,23 +35,23 @@
                                     <div class="flexslider">
                                         <div class="slider-wrap" data-lightbox="gallery">
                                             {% if product.image %}
-                                            <div class="slide" data-thumb="{{product.image.url}}"><a
-                                                href="{{product.image.url}}" title="Pink Printed Dress - Front View"
-                                                data-lightbox="gallery-item"><img src="{{product.image.url}}"
+                                            <div class="slide" data-thumb="{{product.image.url | watermark:'asia,  position=50%x50%, opacity=40,tile=1'}}"><a
+                                                href="{{product.image.url | watermark:'asia,  position=50%x50%, opacity=40,tile=1'}}" title="Pink Printed Dress - Front View"
+                                                data-lightbox="gallery-item"><img src="{{product.image.url | watermark:'asia,  position=50%x50%, opacity=40,tile=1'}}"
                                                 alt="{{product.name}}"></a></div>
                                             {% endif %}
                                             {% if product.image_1 %}
-                                            <div class="slide" data-thumb="{{product.image_1.url}}"><a
-                                                    href="{{product.image_1.url}}"
+                                            <div class="slide" data-thumb="{{product.image_1.url | watermark:'asia,  position=50%x50%, opacity=40,tile=1'}}"><a
+                                                    href="{{product.image_1.url | watermark:'asia,  position=50%x50%, opacity=40,tile=1'}}"
                                                     title="Pink Printed Dress - Side View"
-                                                    data-lightbox="gallery-item"><img src="{{product.image_1.url}}"
+                                                    data-lightbox="gallery-item"><img src="{{product.image_1.url | watermark:'asia,  position=50%x50%, opacity=40,tile=1'}}"
                                                         alt="{{product.name}}"></a></div>
                                             {% endif %}
                                             {% if product.image_2 %}
-                                            <div class="slide" data-thumb="{{product.image_2.url}}"><a
-                                                    href="{{product.image_2.url}}"
+                                            <div class="slide" data-thumb="{{product.image_2.url | watermark:'asia,  position=50%x50%, opacity=40,tile=1'}}"><a
+                                                    href="{{product.image_2.url | watermark:'asia,  position=50%x50%, opacity=40,tile=1'}}"
                                                     title="Pink Printed Dress - Back View"
-                                                    data-lightbox="gallery-item"><img src="{{product.image_2.url}}"
+                                                    data-lightbox="gallery-item"><img src="{{product.image_2.url | watermark:'asia,  position=50%x50%, opacity=40,tile=1'}}"
                                                         alt="{{product.name}}"></a></div>
                                             {% endif %}
                                         </div>

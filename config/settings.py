@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'ckeditor',
 
-    # "watermarker",
+    "watermarker",
 
     'product',
     'accounts',

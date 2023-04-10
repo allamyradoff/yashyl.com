@@ -106,7 +106,7 @@ def all_product(request):
     else:
         cart_items = 0
 
-    paginator = Paginator(all_products, 8)
+    paginator = Paginator(all_products, 12)
     page = request.GET.get('page')
     paged_products = paginator.get_page(page)
 
