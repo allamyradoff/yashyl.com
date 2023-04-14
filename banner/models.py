@@ -34,7 +34,6 @@ class MiniSlider(models.Model):
 
 class TopProduct(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="Haryt")
-    link = models.CharField(max_length=255, blank=True, null=True, verbose_name="Salgysy")
     mini_desc_1 = models.CharField(max_length=50, blank=True, null=True, verbose_name="Beýan")
     mini_desc_2 = models.CharField(max_length=50, blank=True, null=True, verbose_name="Beýan")
     mini_desc_3 = models.CharField(max_length=50, blank=True, null=True, verbose_name="Beýan")
