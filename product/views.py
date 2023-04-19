@@ -58,6 +58,8 @@ def home(request):
     category_8 = Category.objects.filter(name="Telefon aksessuarlary")
     category_9 = Category.objects.filter(name="Konselyariya harytlary")
     category_10 = Category.objects.filter(name="Gap-gachlar")
+    category_11 = Category.objects.filter(name="Sowgatlar")
+    category_12 = Category.objects.filter(name="Awto shaylar")
 
 
     context = {
@@ -86,6 +88,8 @@ def home(request):
         'category_8':category_8,
         'category_9':category_9,
         'category_10':category_10,
+        'category_11':category_11,
+        'category_12':category_12,
 
     }
     return render(request, 'home.html', context)
@@ -124,6 +128,8 @@ def all_product(request):
     category_8 = Category.objects.filter(name="Telefon aksessuarlary")
     category_9 = Category.objects.filter(name="Konselyariya harytlary")
     category_10 = Category.objects.filter(name="Gap-gachlar")
+    category_11 = Category.objects.filter(name="Sowgatlar")
+    category_12 = Category.objects.filter(name="Awto shaylar")
 
 
 
@@ -146,6 +152,8 @@ def all_product(request):
         'category_8':category_8,
         'category_9':category_9,
         'category_10':category_10,
+        'category_11':category_11,
+        'category_12':category_12,
 
     }
 
@@ -185,6 +193,8 @@ def store(request, id):
     category_8 = Category.objects.filter(name="Telefon aksessuarlary")
     category_9 = Category.objects.filter(name="Konselyariya harytlary")
     category_10 = Category.objects.filter(name="Gap-gachlar")
+    category_11 = Category.objects.filter(name="Sowgatlar")
+    category_12 = Category.objects.filter(name="Awto shaylar")
 
 
 
@@ -209,6 +219,8 @@ def store(request, id):
         'category_8':category_8,
         'category_9':category_9,
         'category_10':category_10,
+        'category_11':category_11,
+        'category_12':category_12,
 
     }
     return render(request, 'store.html', context)
@@ -248,6 +260,8 @@ def storeCategory(request, slug):
     category_8 = Category.objects.filter(name="Telefon aksessuarlary")
     category_9 = Category.objects.filter(name="Konselyariya harytlary")
     category_10 = Category.objects.filter(name="Gap-gachlar")
+    category_11 = Category.objects.filter(name="Sowgatlar")
+    category_12 = Category.objects.filter(name="Awto shaylar")
 
 
 
@@ -271,6 +285,8 @@ def storeCategory(request, slug):
         'category_8':category_8,
         'category_9':category_9,
         'category_10':category_10,
+        'category_11':category_11,
+        'category_12':category_12,
 
     }
 
@@ -356,6 +372,8 @@ def product_detail(request, category_id, id):
     category_8 = Category.objects.filter(name="Telefon aksessuarlary")
     category_9 = Category.objects.filter(name="Konselyariya harytlary")
     category_10 = Category.objects.filter(name="Gap-gachlar")
+    category_11 = Category.objects.filter(name="Sowgatlar")
+    category_12 = Category.objects.filter(name="Awto shaylar")
 
 
 
@@ -381,6 +399,8 @@ def product_detail(request, category_id, id):
         'category_8':category_8,
         'category_9':category_9,
         'category_10':category_10,
+        'category_11':category_11,
+        'category_12':category_12,
 
     }
 

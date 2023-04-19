@@ -70,6 +70,8 @@ def categoryList(request):
     eighth  = None
     ninth  = None
     tenth  = None
+    eleven = None
+    twelfth = None
 
     category = Category.objects.all()
     if request.query_params.get('first', None):
@@ -102,6 +104,12 @@ def categoryList(request):
     if request.query_params.get('tenth', None):
         tenth = request.query_params.get('tenth', None)
         category = category.filter(name="Gap-gachlar")
+    if request.query_params.get('eleven', None):
+        eleven = request.query_params.get('eleven', None)
+        category = category.filter(name="Sowgatlar")
+    if request.query_params.get('twelfth', None):
+        twelfth = request.query_params.get('twelfth', None)
+        category = category.filter(name="Awto shaylar")
     # if request.query_params.get('one', None):
     #     one = request.query_params.get('one', None)
     #     category = category.filter(name="Sport eşikleri")

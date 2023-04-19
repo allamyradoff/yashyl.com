@@ -27,6 +27,7 @@
                                             <th scope="col">Ady #</th>
                                             <th scope="col">Senesi</th>
                                             <th scope="col"> Üýtgetmek</th>
+                                            <th scope="col"> Poz</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -34,7 +35,9 @@
                                         <tr>
                                             <th scope="row"><a href="#">{{i.name}}</a> </th>
                                             <td>{{i.created_at}}</td>
-                                            <td><a href="{% url 'edit_ad' i.id %}" style="margin-top:2%" class="tp-in-btn w-100"> Üýtgetmek </a>
+                                            <td><a href="{% url 'edit_ad' i.id %}" style="margin-top:2%" class="btn btn-success w-100"> Üýtgetmek </a>
+                                            </td>
+                                            <td><a href="{% url 'delete_ad' i.id %}" style="margin-top:2%" class="btn btn-danger w-100"> Pozmak </a>
                                             </td>
                                         </tr>
                                         {% endfor %}

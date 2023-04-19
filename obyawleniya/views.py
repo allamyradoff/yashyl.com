@@ -63,14 +63,14 @@ def edit_ad(request, id):
     category = Category.objects.all()
 
     if request.method == "POST":
-        form = AdForm(request.POST, instance=ad)
+        form = AdEditForm(request.POST, instance=ad)
         if form.is_valid():
             form.save()
-            return HttpResponse('OK')
+            return redirect('my_ad')
 
     context = {
         'ad':ad,
-        'form':AdForm(instance=ad),
+        'form':AdEditForm(instance=ad),
         'category':category
     }
 

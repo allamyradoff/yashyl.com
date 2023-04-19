@@ -5,8 +5,9 @@ from accounts.models import Account
 from store.models import Store
 from ckeditor_uploader.fields import RichTextUploadingField
 from store.models import Store
+from django.utils.html import mark_safe
 
-class Category(models.Model):    
+class Category(models.Model):
     COL = (
         ('col-lg-7', 'col-lg-7'),
         ('col-lg-5', 'col-lg-5'),
@@ -24,14 +25,17 @@ class Category(models.Model):
         ('Sport we guymenje', 'Sport we guymenje'),
         ('Konselyariya harytlary', 'Konselyariya harytlary'),
         ('Gap-gachlar', 'Gap-gachlar'),
+        ('Sowgatlar', 'Sowgatlar'),
+        ('Awto shaylar', 'Awto shaylar'),
     )
-    name = models.CharField(max_length=150, choices=Name, default="Ayakgap", blank=True, null=True)
+    name = models.CharField(max_length=150, choices=Name,
+                            default="Ayakgap", blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)
     desc = models.TextField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='category/', blank=True, null=True)
-    mobile_image = models.ImageField(upload_to='mobile_category/', blank=True, null=True)
+    mobile_image = models.ImageField(
+        upload_to='mobile_category/', blank=True, null=True)
     col_md = models.CharField(max_length=150, choices=COL, default="col-lg-7")
-
 
     class Meta:
         verbose_name = "category"
@@ -51,16 +55,12 @@ class SubCategory(models.Model):
 
     cat_id = models.ForeignKey(Category, on_delete=models.CASCADE)
 
-
-    
     def __str__(self):
         return self.name
 
 
-
 class Cours(models.Model):
     cours = models.FloatField()
-
 
 
 class Brand(models.Model):
@@ -69,7 +69,6 @@ class Brand(models.Model):
 
     def __str__(self):
         return self.name
-
 
 
 class Product(models.Model):
@@ -92,10 +91,10 @@ class Product(models.Model):
     cource_price = models.IntegerField(blank=True, null=True)
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    brands = models.ForeignKey(Brand, on_delete=models.CASCADE, blank=True, null=True)
-    store = models.ForeignKey(Store, on_delete=models.CASCADE, blank=True, null=True)
-
-
+    brands = models.ForeignKey(
+        Brand, on_delete=models.CASCADE, blank=True, null=True)
+    store = models.ForeignKey(
+        Store, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -112,9 +111,10 @@ class Product(models.Model):
 
         super(Product, self).save(*args, **kwargs)
 
-
     def get_absolute_url(self):
         return reverse('product_detail', args=[self.id, self.category.id])
+
+
 
 
 class VariationManager(models.Manager):
@@ -161,14 +161,13 @@ class ReviewRating(models.Model):
 
 
 class LikeProduct(models.Model):
-    user = models.ForeignKey(Account, on_delete=models.CASCADE, blank=True, null=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
-    
+    user = models.ForeignKey(
+        Account, on_delete=models.CASCADE, blank=True, null=True)
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, blank=True, null=True)
 
-    
     def __str__(self):
         return f'{self.user.phone_number} - product -{self.product.name}'
-
 
     class Meta:
         unique_together = ('user', 'product',)

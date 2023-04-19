@@ -15,17 +15,14 @@
             <main class="col-md-9">
                 <article class="card">
                     <header class="card-header">
-                        <strong class="d-inline-block mr-3">Редактировать профиль:</strong>
+                        <strong class="d-inline-block mr-3">Bildirişi üýtgetmek:</strong>
                     </header>
                     <div class="card-body">
-                        <div>
-                            <img src="{{userprofile.profile_avatar.url}}" alt="" width="100" ,
-                                style="border-radius: 50px;">
-                        </div>
+                        
                         <div class="row">
 
                             <div class="col-md-12">
-                                <form action="{% url 'added_ad_product' %}" method="POST" enctype="multipart/form-data">
+                                <form action="{% url 'edit_ad' ad.id %}" method="POST" enctype="multipart/form-data">
                                     {% csrf_token %}
 
                                     <div class="col-md-12" style="margin: 1%; display: flex;">
@@ -33,9 +30,7 @@
                                             {{form.name}}
 
                                         </div>
-                                        <div class="col-md-4" style="margin-left: 1%;">
-                                            {{form.price}}
-                                        </div>
+                                        
 
                                     </div>
                                     <div class="col-md-12" style="margin: 1%;">
@@ -57,13 +52,7 @@
                                             {{form.image_3}}
                                         </div>
                                     </div>
-                                    <div class="col-md-2" style="display: flex;">
-                                        {{form.exchange}}
-                                        <p style="margin-left: 2%;">Обмен</p>
-                                    </div>
-                                    <div class="col-md-2" style="display: flex;">
-                                        {{form.credit}}
-                                        <p style="margin-left: 2%;">Кредит</p>
+                                   
                                     </div>
                                     {{form.phone_number}}
                                     <div class="col-md-12" style="display: flex; flex-wrap: wrap;">

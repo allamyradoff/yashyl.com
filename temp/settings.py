@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -213,4 +214,14 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': None,
     },
+}
+
+
+from typing import Any, Dict
+
+JAZZMIN_SETTINGS: Dict[str, Any] = {
+    "site_title": "Yashyl",
+    "site_header": "Yashyl",
+    "site_logo": "logo.png",
+    "welcome_sign" : "Добро пожаловать в Yashyl.com Admin" ,
 }
