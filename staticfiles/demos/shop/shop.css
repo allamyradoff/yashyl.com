@@ -190,3 +190,11 @@ ul.iconlist i {
 }
 
 .shop-footer-features h5 span { color: #A0ACB6 !important; }
+
+
+@media (min-width: 576px) {
+
+	.banner_charity {
+		max-width: 350px !important;
+	}
+}

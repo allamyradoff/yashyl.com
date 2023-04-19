@@ -2103,6 +2103,8 @@ a.h-text-dark:hover {
 }
 
 @media (min-width: 576px) {
+
+	
 	.min-vh-sm-100 {
 		min-height: 100vh !important;
 	}
@@ -2210,6 +2212,7 @@ a.h-text-dark:hover {
 	.max-vh-sm-none {
 		max-height: none !important;
 	}
+	
 }
 
 @media (min-width: 768px) {
