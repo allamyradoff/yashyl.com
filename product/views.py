@@ -466,3 +466,7 @@ def submit_review(request, product_id):
 
                 messages.success(request, 'Syn edeniňiz üçin sag boluň')
                 return redirect(url)
+
+
+def about(request):
+    return render(request, 'about-us.html')

@@ -194,7 +194,12 @@ ul.iconlist i {
 
 @media (min-width: 576px) {
 
+
+}
+
+@media (min-width: 390px) {
+
 	.banner_charity {
-		max-width: 350px !important;
+		display: block;
 	}
 }

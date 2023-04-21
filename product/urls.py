@@ -13,6 +13,9 @@ urlpatterns = [
   path('submit_review/<int:product_id>/', submit_review, name="submit_review"),
 
 
+  path('about_us/', about, name="about_us"),
+
+
 
 
   path('storeCatgeory/<str:slug>/', storeCategory, name="storeCategory")
