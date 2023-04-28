@@ -41,6 +41,9 @@ def home(request):
     logo = Logo.objects.all()
     ads_cat = CategoryAd.objects.all()
 
+    mini_about_us_left = MiniAboutUsLeft.objects.all()
+    mini_about_us_right = MiniAboutUsRight.objects.all()
+
     if request.user.is_authenticated:
         cart_items = CartItem.objects.filter(user=request.user, is_active=True)
     else:
@@ -78,6 +81,8 @@ def home(request):
         'ads_cat': ads_cat,
         'banner_of_charity': banner_of_charity,
         'brands': brands,
+        'mini_about_us_left':mini_about_us_left,
+        'mini_about_us_right':mini_about_us_right,
         'category_1': category_1,
         'category_2': category_2,
         'category_3': category_3,

@@ -350,57 +350,21 @@
 			<div class="row col-mb-50 mb-0 mt-5">
 				<div class="col-lg-7">
 					<div class="row mt-3">
-						<div class="col-sm-6">
+						{% for i in mini_about_us_left %}
+						<div class="col-sm-6 mt-4 ">
 							<div class="feature-box fbox-sm fbox-plain">
 								<div class="fbox-icon">
-									<a href="#"><i class="icon-line2-present text-dark text-dark"></i></a>
+									<a href="#"><img src="{{i.icon.url }}" alt=""></a>
 								</div>
 								<div class="fbox-content">
-									<h3 class="font-weight-normal">100% Original</h3>
-									<p>Canvas provides support for Native HTML5 Videos that can be added to a Full Width
-										Background.</p>
+									<h3 class="font-weight-normal">{{i.title}}</h3>
+									<p>{{i.mini_desc}}</p>
 								</div>
 							</div>
 						</div>
+						{% endfor %}
 
-						<div class="col-sm-6 mt-4 mt-sm-0">
-							<div class="feature-box fbox-sm fbox-plain">
-								<div class="fbox-icon">
-									<a href="#"><i class="icon-line2-globe text-dark"></i></a>
-								</div>
-								<div class="fbox-content">
-									<h3 class="font-weight-normal">Mugt eltip bermek</h3>
-									<p>Display your Content attractively using Parallax Sections that have unlimited
-										customizable areas.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 mt-4">
-							<div class="feature-box fbox-sm fbox-plain">
-								<div class="fbox-icon">
-									<a href="#"><i class="icon-line2-reload text-dark"></i></a>
-								</div>
-								<div class="fbox-content">
-									<h3 class="font-weight-normal">30 günlük gaýdyp gelýär</h3>
-									<p>You have complete easy control on each &amp; every element that provides endless
-										customization possibilities.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 mt-4">
-							<div class="feature-box fbox-sm fbox-plain">
-								<div class="fbox-icon">
-									<a href="#"><i class="icon-line2-wallet text-dark"></i></a>
-								</div>
-								<div class="fbox-content">
-									<h3 class="font-weight-normal">Töleg opsiýasys</h3>
-									<p>We accept Visa, MasterCard and American Express. And We also Deliver by COD(only
-										in US)</p>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 

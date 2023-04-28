@@ -1,4 +1,3 @@
-from pyexpat import model
 from django.db import models
 from product.models import *
 
@@ -85,3 +84,25 @@ class Logo(models.Model):
 class CheckoutBanner(models.Model):
     image = models.ImageField(
         upload_to="checkout_banner/", blank=True, null=True, verbose_name="Surat")
+    
+
+class MiniAboutUsLeft(models.Model):
+    icon = models.ImageField(upload_to="icon_mini_about/", blank=True, null=True, verbose_name="iconkasy")
+    title = models.CharField(max_length=60, blank=True, null=True, verbose_name="Ady")
+    mini_desc = models.CharField(max_length=255, blank=True, null=True, verbose_name="Gysgacha beyany")
+
+
+    def __str__(self):
+        return self.title
+    
+class MiniAboutUsRight(models.Model):
+    title = models.CharField(max_length=60, blank=True, null=True, verbose_name="Ady")
+    mini_desc = models.CharField(max_length=255, blank=True, null=True)
+
+
+    def __str__(self):
+        return self.title
+
+
+
+
