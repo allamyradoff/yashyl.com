@@ -78,7 +78,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/', blank=True, null=True)
     image_1 = models.ImageField(upload_to='products/', blank=True, null=True)
     image_2 = models.ImageField(upload_to='products/', blank=True, null=True)
-    price = models.IntegerField(blank=True, null=True)
+    price = models.FloatField(blank=True, null=True)
     stock = models.IntegerField(blank=True, null=True)
     is_sale = models.BooleanField(default=False)
     is_new = models.BooleanField(default=False)
