@@ -11,13 +11,20 @@ from obyawleniya.models import *
 from .serializers import *
 from news.models import *
 
+from rest_framework.pagination import LimitOffsetPagination
 
-@api_view(['GET'])
-def adList(request):
-    # permission_classes = [IsAuthenticated]
-    ad = Ad.objects.all()
-    serializer = AdSerializer(ad, many=True)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+
+# @api_view(['GET'])
+
+class AdListView(APIView, LimitOffsetPagination):
+    def get(self, request):
+        # permission_classes = [IsAuthenticated]
+        ad = Ad.objects.all()
+        # serializer = AdSerializer(ad, many=True)
+        results = self.paginate_queryset(ad,  request, view=self)
+        serializer = AdSerializer(results, many=True)
+        return self.get_paginated_response(serializer.data)
+        # return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class AdCreateView(generics.CreateAPIView, generics.UpdateAPIView):
@@ -27,7 +34,7 @@ class AdCreateView(generics.CreateAPIView, generics.UpdateAPIView):
 
 
 class AdsDelete(APIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     def delete(self, request, pk):
         try:
             ad = Ad.objects.get(pk=pk)
@@ -44,6 +51,16 @@ class AdsDetail(APIView):
             ad = Ad.objects.get(pk=pk)
             print(ad)
             serializer = AdSerializer(ad, many=False)
-            return Response({"response":"Удачно", "data":serializer.data}, status=status.HTTP_200_OK)
+            return Response({"response": "Удачно", "data": serializer.data}, status=status.HTTP_200_OK)
+        except:
+            return Response({"response": "Ошибка"}, status=status.HTTP_403_FORBIDDEN)
+
+
+class LastAds(APIView):
+    def get(self, request):
+        try:
+            ad = Ad.objects.all().order_by('-id')[:5]
+            serializer = AdSerializer(ad, many=True)
+            return Response({"response": "Удачно", "data": serializer.data}, status=status.HTTP_200_OK)
         except:
             return Response({"response": "Ошибка"}, status=status.HTTP_403_FORBIDDEN)

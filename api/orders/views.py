@@ -74,11 +74,14 @@ class OrderItemsDetailView(APIView):
 
     def get(self, request, id):
         try:
-            order = OrderProduct.objects.get(id=id)
-            serializer = OrderItemsSerializer(order, many=False)
+            order = Order.objects.get(id=id)
+            print(order)
+            order_p = OrderProduct.objects.filter(order_id=order)
+            print(order_p)
+            serializer = OrderItemsSerializer(order_p, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except:
-            return Response({'error': 'Something went wrong.'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Что-то пошло не так.'}, status=status.HTTP_404_NOT_FOUND)
 
     def put(self, request, id):
         try:
@@ -90,7 +93,7 @@ class OrderItemsDetailView(APIView):
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except:
-            return Response({'error': 'Something went wrong.'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Что-то пошло не так..'}, status=status.HTTP_404_NOT_FOUND)
 
     def delete(self, request, id):
         try:
@@ -98,5 +101,5 @@ class OrderItemsDetailView(APIView):
             order.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         except:
-            return Response({'error': 'Something went wrong.'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Что-то пошло не так..'}, status=status.HTTP_404_NOT_FOUND)
 
