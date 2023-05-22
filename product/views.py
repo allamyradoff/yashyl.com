@@ -109,6 +109,8 @@ def all_product(request):
     logo = Logo.objects.all()
     cource = Cours.objects.last()
     cource = cource.cours
+    gif = Gif.objects.last()
+    print(gif)
 
     if request.user.is_authenticated:
         cart_items = CartItem.objects.filter(user=request.user, is_active=True)
@@ -159,6 +161,7 @@ def all_product(request):
         'category_10':category_10,
         'category_11':category_11,
         'category_12':category_12,
+        'gif':gif
 
     }
 

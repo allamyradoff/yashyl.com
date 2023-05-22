@@ -2,6 +2,14 @@ from django.db import models
 from product.models import *
 
 
+class Gif(models.Model):
+
+    gif = models.ImageField(
+        upload_to="slider_banner/", blank=True, null=True, verbose_name="gif suraty")
+
+
+
+
 class Slider(models.Model):
     slider_title = models.CharField(max_length=100, blank=True, null=True, verbose_name="Web slider")
     slider_mini_title = models.CharField(max_length=100, blank=True, null=True, verbose_name="Slider gysgaça beýan")
