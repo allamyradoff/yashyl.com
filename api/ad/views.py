@@ -64,3 +64,19 @@ class LastAds(APIView):
             return Response({"response": "Удачно", "data": serializer.data}, status=status.HTTP_200_OK)
         except:
             return Response({"response": "Ошибка"}, status=status.HTTP_403_FORBIDDEN)
+
+
+
+class MyAds(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        try:
+            user = request.user
+            ad = Ad.objects.filter(user=user)
+            print(ad)
+            serializer = AdSerializer(ad, many=True)
+            return Response({"response": "Удачно", "data": serializer.data}, status=status.HTTP_200_OK)
+        except:
+            return Response({"response": "Ошибка"}, status=status.HTTP_403_FORBIDDEN)

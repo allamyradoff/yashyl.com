@@ -10,4 +10,6 @@ urlpatterns = [
 	path('delete-add/<int:pk>/', views.AdsDelete.as_view(), name="delete-add_mobile"),
 	path('ad-detail/<int:pk>/', views.AdsDetail.as_view(), name="ad-detail_mobile"),
 	path('last-ads/', views.LastAds.as_view(), name="last-ads_mobile"),
+    
+	path('my-ads/', views.MyAds.as_view(), name="my-ads_mobile"),
 ]

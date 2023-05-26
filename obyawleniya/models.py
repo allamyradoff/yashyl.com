@@ -33,14 +33,14 @@ class Locations(models.Model):
 
 
 class Ad(models.Model):
-    LOC_CATEGORY = [
-        ('Mary', 'Mary'),
-        ('Ashgabat', 'Ashgabat'),
-        ('Lebap', 'Lebap'),
-        ('Ahal', 'Ahal'),
-        ('Balkan', 'Balkan'),
-        ('Dashoguz', 'Dashoguz'),
-    ]
+    # LOC_CATEGORY = [
+    #     ('Mary', 'Mary'),
+    #     ('Ashgabat', 'Ashgabat'),
+    #     ('Lebap', 'Lebap'),
+    #     ('Ahal', 'Ahal'),
+    #     ('Balkan', 'Balkan'),
+    #     ('Dashoguz', 'Dashoguz'),
+    # ]
     name = models.CharField(max_length=255, verbose_name="Ady")
     desc = models.TextField(blank=True, null=True, verbose_name="Beýany")
     image = models.ImageField(upload_to='ad_test/', blank=True, null=True, verbose_name="Surat")
@@ -50,11 +50,11 @@ class Ad(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
     seen_count = models.IntegerField(blank=True, null=True, default=0, verbose_name="Görülenler")
+    locations = models.CharField(max_length=255, verbose_name="Ýerleşýän ýeri")
 
     
     
-    locations = models.CharField(max_length=150, choices=LOC_CATEGORY, default="Mary", verbose_name="Ýerleşýän ýeri")
-    cat_id = models.ForeignKey(CategoryAd, on_delete=models.CASCADE, blank=True, null=True, verbose_name="Kategoriýa")
+    # cat_id = models.ForeignKey(CategoryAd, on_delete=models.CASCADE, blank=True, null=True, verbose_name="Kategoriýa")
     user = models.ForeignKey(Account, on_delete=models.CASCADE, null=True, verbose_name="Müşderi")
 
     def save(self):

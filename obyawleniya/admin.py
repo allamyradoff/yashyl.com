@@ -2,8 +2,8 @@ from django.contrib import admin
 from .models  import *
 
 class AdsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'locations', 'cat_id', 'user')
-    list_editable = ('locations', 'user')
+    list_display = ('name', 'user')
+    list_editable = ('user',)
 
 admin.site.register(CategoryAd)
 admin.site.register(Ad,AdsAdmin)
